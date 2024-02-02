@@ -1,0 +1,34 @@
+// ignore_for_file: unused_local_variable
+
+import 'package:flutter/material.dart';
+import 'package:writeflow/atom/theme.dart';
+import 'package:writeflow/helper/router.dart';
+import 'package:writeflow/organism/layout.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+Future<void> main() async {
+  // Ensure the Flutter widgets binding is initialized.
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  var box = await Hive.openBox('tokenStorage');
+
+  runApp(const ProviderScope(child: MyApp()));
+}
+
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+    return MaterialApp.router(
+      title: 'writeflow',
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      debugShowCheckedModeBanner: false,
+      routerDelegate: router.routerDelegate,
+      routeInformationParser: router.routeInformationParser,
+      routeInformationProvider: router.routeInformationProvider,
+    );
+  }
+}
