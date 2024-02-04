@@ -8,7 +8,7 @@ class Pulse extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Your App Name")),
+      // appBar: AppBar(title: const Text("Your App Name")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

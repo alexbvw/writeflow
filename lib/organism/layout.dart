@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:writeflow/element/pulse.dart';
 import 'package:writeflow/element/account.dart';
 import 'package:writeflow/element/collections.dart';
-import 'package:writeflow/helper/authentication_controller.dart';
+import 'package:writeflow/helper/authentication_provider.dart';
 
 final indexProvider = StateProvider<int>((ref) => 0);
 final String assetName = 'assets/images/writeflow-logo.svg';

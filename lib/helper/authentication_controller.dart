@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-final authenticationProvider =
-    ChangeNotifierProvider((ref) => AuthenticationController());
 
 class AuthenticationController with ChangeNotifier {
 //Within this section, you can integrate authentication methods

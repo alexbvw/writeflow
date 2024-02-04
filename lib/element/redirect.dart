@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:writeflow/helper/router.dart';
 import 'package:writeflow/model/token.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,34 +22,11 @@ class Redirect extends HookConsumerWidget {
     final authenticateData = ref.watch(tokenProvider);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Get URL Parameter"),
-        backgroundColor: Colors.redAccent,
+        title: Text("Authorization"),
       ),
       body: authenticateData.when(
           data: (authenticateData) {
-            token tokenData = token.fromJson(authenticateData.toJson());
-            return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  children: [
-                    Card(
-                      color: Colors.blue,
-                      elevation: 4,
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      child: ListTile(
-                        title: Text(
-                          tokenData.accessToken ?? "",
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                        subtitle: Text(myurl,
-                            style: const TextStyle(color: Colors.white)),
-                        // trailing: CircleAvatar(
-                        //   backgroundImage: NetworkImage(userList[index].avatar),
-                        // ),
-                      ),
-                    ),
-                  ],
-                ));
+            SizedBox();
           },
           error: (err, s) => Text(err.toString()),
           loading: () => const Center(

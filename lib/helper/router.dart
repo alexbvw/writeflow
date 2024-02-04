@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:writeflow/element/redirect.dart';
-import 'package:writeflow/helper/authentication_controller.dart';
+import 'package:writeflow/helper/authentication_provider.dart';
 import 'package:writeflow/organism/authentication.dart';
 import 'package:writeflow/organism/layout.dart';
 
@@ -51,28 +51,27 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/${AppRoute.authentication.name}',
         name: AppRoute.authentication.name,
         builder: (context, state) {
-          return const LoginPage();
+          return LoginPage();
         },
       ),
     ],
     redirect: (context, state) async {
-      // final isAuthenticated = authState.isLoggedIn;
+      var isAuthenticated = authState.isLoggedIn;
       var box = Hive.box('tokenStorage');
       // print(box.get('token'));
       /// [state.fullPath] will give current route Path
       if (box.get('token') != null) {
-        authState.isLoggedIn = true;
+        isAuthenticated = true;
       } else {
-        authState.isLoggedIn = false;
+        isAuthenticated = false;
       }
-
       String myurl = Uri.base.toString();
-      if (myurl.contains('redirect')) {
+      if (box.get('token') == null && myurl.contains('redirect')) {
         return '/${AppRoute.redirect.name}';
       }
 
       /// null redirects to Initial Location
-      return authState.isLoggedIn ? null : '/${AppRoute.authentication.name}';
+      return isAuthenticated ? null : '/${AppRoute.authentication.name}';
     },
   );
 });

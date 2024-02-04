@@ -17,6 +17,7 @@ const hereAutocompleteUrl = 'https://autocomplete.search.hereapi.com/v1/';
 
 const webflowApiUrl = "https://api.webflow.com/";
 const webflowAuthUrl = "https://webflow.com/";
+const webflowAuthServiceUrl = "https://14e4-197-184-161-240.ngrok-free.app/";
 
 const client_id =
     "b508ea1817364eab97ffd0a0757e9fd25f20a5398385b9752481e6009e3d628d";
