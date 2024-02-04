@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:writeflow/element/pulse.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:writeflow/element/redirect.dart';
 import 'package:writeflow/helper/authentication_controller.dart';
 import 'package:writeflow/organism/authentication.dart';
+import 'package:writeflow/organism/layout.dart';
 
+var box = Hive.box('testBox');
 final _key = GlobalKey<NavigatorState>();
-var box = Hive.openBox('testBox');
 
-enum AppRoute { splash, authentication, pulse, collections }
+enum AppRoute { splash, authentication, layout, redirect }
 
 final routerProvider = Provider<GoRouter>((ref) {
   final authState = ref.watch(authenticationProvider);
-
   return GoRouter(
     navigatorKey: _key,
 
@@ -27,17 +27,24 @@ final routerProvider = Provider<GoRouter>((ref) {
     refreshListenable: authState,
     routes: [
       GoRoute(
-        path: '/${AppRoute.splash.name}',
-        name: AppRoute.splash.name,
+        path: '/${AppRoute.redirect.name}',
+        name: AppRoute.redirect.name,
         builder: (context, state) {
-          return const SplashPage();
+          return Redirect();
         },
       ),
       GoRoute(
         path: '/',
-        name: AppRoute.pulse.name,
+        name: AppRoute.layout.name,
         builder: (context, state) {
-          return const Pulse();
+          return Layout();
+        },
+      ),
+      GoRoute(
+        path: '/${AppRoute.splash.name}',
+        name: AppRoute.splash.name,
+        builder: (context, state) {
+          return const SplashPage();
         },
       ),
       GoRoute(
@@ -52,7 +59,6 @@ final routerProvider = Provider<GoRouter>((ref) {
       // final isAuthenticated = authState.isLoggedIn;
       var box = Hive.box('tokenStorage');
       // print(box.get('token'));
-
       /// [state.fullPath] will give current route Path
       if (box.get('token') != null) {
         authState.isLoggedIn = true;
@@ -60,8 +66,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         authState.isLoggedIn = false;
       }
 
+      String myurl = Uri.base.toString();
+      if (myurl.contains('redirect')) {
+        return '/${AppRoute.redirect.name}';
+      }
+
       /// null redirects to Initial Location
-      return authState.isLoggedIn ? '/' : '/${AppRoute.authentication.name}';
+      return authState.isLoggedIn ? null : '/${AppRoute.authentication.name}';
     },
   );
 });

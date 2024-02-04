@@ -15,12 +15,6 @@ class Pulse extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text("Home Page"),
-            ElevatedButton(
-              onPressed: () async {
-                ref.read(authenticationProvider.notifier).signOut();
-              },
-              child: const Text("Logout"),
-            ),
           ],
         ),
       ),
