@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 //Pages
 import 'package:writeflow/element/pulse.dart';
 import 'package:writeflow/element/account.dart';
@@ -36,15 +36,10 @@ class Layout extends ConsumerWidget {
         icon: Icon(Icons.account_box_outlined),
         label: 'account',
       ),
-      // BottomNavigationBarItem(
-      //   icon: Icon(Icons.fastfood),
-      //   label: '',
-      // ),
     ];
     return Scaffold(
       endDrawer: Drawer(
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
@@ -93,7 +88,6 @@ class Layout extends ConsumerWidget {
               ),
             ),
             BottomNavigationBar(
-              // currentIndex: ,
               fixedColor: Colors.blueAccent[400],
               currentIndex: ref.watch(indexProvider),
               onTap: (index) {
@@ -111,7 +105,6 @@ class Layout extends ConsumerWidget {
 
 class AppBarContent extends StatelessWidget {
   const AppBarContent({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Column(

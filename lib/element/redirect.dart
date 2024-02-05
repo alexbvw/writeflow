@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:writeflow/helper/router.dart';
-import 'package:writeflow/model/token.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:writeflow/helper/token_provider.dart';
@@ -12,7 +11,7 @@ class Redirect extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var box = Hive.box('tokenStorage');
-    String myurl = Uri.base.toString(); //get complete url
+
     String? code =
         Uri.base.queryParameters["code"]; //get parameter with attribute "para1"
     String? state = Uri
@@ -27,7 +26,7 @@ class Redirect extends HookConsumerWidget {
       body: authenticateData.when(
           data: (authenticateData) {
             SizedBox();
-            context.goNamed('/');
+            context.goNamed(AppRoute.layout.name);
           },
           error: (err, s) => Text(err.toString()),
           loading: () => const Center(

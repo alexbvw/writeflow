@@ -15,15 +15,15 @@ const hereGeocodeUrl = 'https://geocode.search.hereapi.com/v1/';
 const hereToken = 'AkEgpqyXqtDdW_xIe-X2sRT5B8f3tbV5vndgqQVf9Tc';
 const hereAutocompleteUrl = 'https://autocomplete.search.hereapi.com/v1/';
 
-const webflowApiUrl = "https://api.webflow.com/";
 const webflowAuthUrl = "https://webflow.com/";
-const webflowAuthServiceUrl = "https://14e4-197-184-161-240.ngrok-free.app/";
+const webflowApiUrl = "https://api.webflow.com/";
+const webflowAuthServiceUrl = "https://728a-197-184-161-240.ngrok-free.app/";
 
-const client_id =
+const clientId =
     "b508ea1817364eab97ffd0a0757e9fd25f20a5398385b9752481e6009e3d628d";
-const client_secret =
+const clientSecret =
     "cddd9773a5b7298e4f481d5add75920e3ade45212a1191483979439b74e86d76";
-const redirect_uri = "https://writeflow.acreative.co.za/redirect";
+const redirectUri = "https://writeflow.acreative.co.za/redirect";
 
 const kDefaultPadding = 20.0;
 const kDefaultShadow = BoxShadow(

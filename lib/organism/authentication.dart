@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:writeflow/constant.dart';
 import 'package:go_router/go_router.dart';
 import 'package:writeflow/helper/router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 
 class LoginPage extends HookConsumerWidget {
-  const LoginPage({super.key});
-
+  var box = Hive.box('tokenStorage');
+  LoginPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -19,6 +21,8 @@ class LoginPage extends HookConsumerWidget {
             const Text("Login Page"),
             ElevatedButton(
               onPressed: () async {
+                // box.put('token',
+                //     '8dda4d4859f4a191b4704b0bb5f650da066ff6e7129e63d7ba6c393b1a096be9');
                 _launchURL(context);
               },
               child: const Text("Login"),
@@ -32,7 +36,6 @@ class LoginPage extends HookConsumerWidget {
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +59,7 @@ void _launchURL(BuildContext context) async {
   try {
     await launchUrl(
       Uri.parse(
-          'https://webflow.com/oauth/authorize?client_id=b508ea1817364eab97ffd0a0757e9fd25f20a5398385b9752481e6009e3d628d&response_type=code&scope=authorized_user%3Aread%20cms%3Aread%20cms%3Awrite%20forms%3Aread%20sites%3Aread%20users%3Aread%20users%3Awrite&redirect_uri=https%3A%2F%2Fwriteflow.acreative.co.za%2Fredirect&state=init'),
+          'https://webflow.com/oauth/authorize?client_id=$clientId&response_type=code&scope=authorized_user%3Aread%20cms%3Aread%20cms%3Awrite%20forms%3Aread%20sites%3Aread%20users%3Aread%20users%3Awrite&redirect_uri=https%3A%2F%2Fwriteflow.acreative.co.za%2Fredirect&state=init'),
       customTabsOptions: CustomTabsOptions(
         colorSchemes: CustomTabsColorSchemes.defaults(
           toolbarColor: theme.colorScheme.surface,
@@ -76,7 +79,6 @@ void _launchURL(BuildContext context) async {
       ),
     );
   } catch (e) {
-// If the URL launch fails, an exception will be thrown. (For example, if no browser app is installed on the Android device.)
     debugPrint(e.toString());
   }
 }
