@@ -1,11 +1,10 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart';
+import 'package:flutter/material.dart';
 import 'package:writeflow/constant.dart';
 import 'package:writeflow/model/token.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class WebFlowServices with ChangeNotifier {
   Future<token> getToken() async {
@@ -21,8 +20,7 @@ class WebFlowServices with ChangeNotifier {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body)['response'];
       box.put('token', result['access_token']);
-      notifyListeners();
-      return result.map(((e) => token.fromJson(e)));
+      return result;
     } else {
       throw Exception(response.reasonPhrase);
     }
