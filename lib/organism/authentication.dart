@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:writeflow/constant.dart';
 import 'package:writeflow/constant.dart';
 import 'package:go_router/go_router.dart';
 import 'package:writeflow/helper/router.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
+
+final String assetName = 'assets/images/writeflow-logo.svg';
 
 class LoginPage extends HookConsumerWidget {
   var box = Hive.box('tokenStorage');
@@ -18,14 +22,36 @@ class LoginPage extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text("Login Page"),
-            ElevatedButton(
-              onPressed: () async {
-                // box.put('token',
-                //     '8dda4d4859f4a191b4704b0bb5f650da066ff6e7129e63d7ba6c393b1a096be9');
-                _launchURL(context);
-              },
-              child: const Text("Login"),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+              child: SvgPicture.asset(
+                assetName,
+                semanticsLabel: 'writeflow',
+                height: 65,
+                fit: BoxFit.contain,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0, left: 8.0, right: 8.0),
+              child: const Text("Ready to start your writing adventure?"),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0, left: 8.0, right: 8.0),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll<Color>(primaryColor),
+                ),
+                onPressed: () async {
+                  // box.put('token',
+                  //     '8dda4d4859f4a191b4704b0bb5f650da066ff6e7129e63d7ba6c393b1a096be9');
+                  _launchURL(context);
+                },
+                child: const Text(
+                  "login with webflow",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ],
         ),

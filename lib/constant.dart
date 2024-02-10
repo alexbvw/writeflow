@@ -5,8 +5,9 @@ const Color light = Color(0xFFF7F8FC);
 const Color active = Color(0xFF2C4E82);
 const Color lightGrey = Color(0xFFA4A6B3);
 
-const kGrey = Color(0xFF0f0f0f);
-const kTextColor = Color(0xFF57bfe6);
+const primaryColor = Color(0xFF0f0f0f);
+const greyColor = Color(0xFF0f0f0f);
+const textColor = Color(0xFF57bfe6);
 
 const kFillStarColor = Color(0xFFFCC419);
 const kTextLightColor = Color(0xFF9A9BB2);
@@ -17,13 +18,14 @@ const hereAutocompleteUrl = 'https://autocomplete.search.hereapi.com/v1/';
 
 const webflowAuthUrl = "https://webflow.com/";
 const webflowApiUrl = "https://api.webflow.com/";
-const webflowAuthServiceUrl = "https://728a-197-184-161-240.ngrok-free.app/";
+const webflowAuthServiceUrl = "https://ce5f-197-185-109-10.ngrok-free.app/";
 
 const clientId =
     "b508ea1817364eab97ffd0a0757e9fd25f20a5398385b9752481e6009e3d628d";
 const clientSecret =
     "cddd9773a5b7298e4f481d5add75920e3ade45212a1191483979439b74e86d76";
 const redirectUri = "https://writeflow.acreative.co.za/redirect";
+const testToken = "123";
 
 const kDefaultPadding = 20.0;
 const kDefaultShadow = BoxShadow(

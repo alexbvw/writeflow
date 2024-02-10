@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:writeflow/element/redirect.dart';
-import 'package:writeflow/helper/authentication_provider.dart';
-import 'package:writeflow/organism/authentication.dart';
 import 'package:writeflow/organism/layout.dart';
+import 'package:writeflow/element/redirect.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:writeflow/organism/authentication.dart';
+import 'package:writeflow/helper/authentication_provider.dart';
 
-var box = Hive.box('testBox');
 final _key = GlobalKey<NavigatorState>();
 
 enum AppRoute { splash, authentication, layout, redirect }
@@ -59,7 +58,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       var isAuthenticated = authState.isLoggedIn;
       var box = Hive.box('tokenStorage');
       if (box.get('token') != null ||
-          box.get('token') != null && box.get('token') == "") {
+          box.get('token') != null && box.get('token') != "") {
         isAuthenticated = true;
       } else {
         isAuthenticated = false;
