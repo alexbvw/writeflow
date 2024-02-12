@@ -36,23 +36,23 @@ class Site {
     lastPublished = json['lastPublished'];
     customDomains = json['customDomains'].cast<String>();
     locales =
-        json['locales'] != null ? new Locales.fromJson(json['locales']) : null;
+        json['locales'] != null ? Locales.fromJson(json['locales']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['workspaceId'] = this.workspaceId;
-    data['displayName'] = this.displayName;
-    data['shortName'] = this.shortName;
-    data['previewUrl'] = this.previewUrl;
-    data['timeZone'] = this.timeZone;
-    data['createdOn'] = this.createdOn;
-    data['lastUpdated'] = this.lastUpdated;
-    data['lastPublished'] = this.lastPublished;
-    data['customDomains'] = this.customDomains;
-    if (this.locales != null) {
-      data['locales'] = this.locales!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['workspaceId'] = workspaceId;
+    data['displayName'] = displayName;
+    data['shortName'] = shortName;
+    data['previewUrl'] = previewUrl;
+    data['timeZone'] = timeZone;
+    data['createdOn'] = createdOn;
+    data['lastUpdated'] = lastUpdated;
+    data['lastPublished'] = lastPublished;
+    data['customDomains'] = customDomains;
+    if (locales != null) {
+      data['locales'] = locales!.toJson();
     }
     return data;
   }
@@ -66,16 +66,16 @@ class Locales {
 
   Locales.fromJson(Map<String, dynamic> json) {
     primary =
-        json['primary'] != null ? new Primary.fromJson(json['primary']) : null;
+        json['primary'] != null ? Primary.fromJson(json['primary']) : null;
     secondary = json['secondary'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.primary != null) {
-      data['primary'] = this.primary!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (primary != null) {
+      data['primary'] = primary!.toJson();
     }
-    data['secondary'] = this.secondary;
+    data['secondary'] = secondary;
     return data;
   }
 }
@@ -109,14 +109,14 @@ class Primary {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['cmsLocaleId'] = this.cmsLocaleId;
-    data['enabled'] = this.enabled;
-    data['displayName'] = this.displayName;
-    data['redirect'] = this.redirect;
-    data['subdirectory'] = this.subdirectory;
-    data['tag'] = this.tag;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['cmsLocaleId'] = cmsLocaleId;
+    data['enabled'] = enabled;
+    data['displayName'] = displayName;
+    data['redirect'] = redirect;
+    data['subdirectory'] = subdirectory;
+    data['tag'] = tag;
     return data;
   }
 }

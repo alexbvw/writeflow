@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:writeflow/helper/authentication_controller.dart';
 
 class Pulse extends HookConsumerWidget {
   const Pulse({super.key});

@@ -8,7 +8,7 @@ import 'package:writeflow/element/collections.dart';
 import 'package:writeflow/helper/authentication_provider.dart';
 
 final indexProvider = StateProvider<int>((ref) => 0);
-final String assetName = 'assets/images/writeflow-logo.svg';
+const String assetName = 'assets/images/writeflow-logo.svg';
 
 enum PageType { pulse, incomming, inventory, outgoing }
 
