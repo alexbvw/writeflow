@@ -9,7 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 
-final String assetName = 'assets/images/writeflow-logo.svg';
+const String assetName = 'assets/images/writeflow-logo.svg';
 
 class LoginPage extends HookConsumerWidget {
   var box = Hive.box('tokenStorage');
@@ -32,21 +32,21 @@ class LoginPage extends HookConsumerWidget {
                 fit: BoxFit.contain,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 30.0, left: 8.0, right: 8.0),
-              child: const Text("Ready to start your writing adventure?"),
+            const Padding(
+              padding: EdgeInsets.only(top: 30.0, left: 8.0, right: 8.0),
+              child: Text("Ready to start your writing adventure?"),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30.0, left: 8.0, right: 8.0),
               child: ElevatedButton(
-                style: ButtonStyle(
+                style: const ButtonStyle(
                   backgroundColor:
                       MaterialStatePropertyAll<Color>(primaryColor),
                 ),
                 onPressed: () async {
-                  // box.put('token',
-                  //     '8dda4d4859f4a191b4704b0bb5f650da066ff6e7129e63d7ba6c393b1a096be9');
-                  _launchURL(context);
+                  box.put('token',
+                      '417331b54ab1472a7e04146675b77df0f2fda0ec6b21a912be112a989ce8cb4a');
+                  // _launchURL(context);
                 },
                 child: const Text(
                   "login with webflow",

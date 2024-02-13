@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:writeflow/atom/theme.dart';
 import 'package:writeflow/helper/router.dart';
@@ -11,8 +11,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
   await Hive.initFlutter();
-  var box = await Hive.openBox('tokenStorage');
-  runApp(const ProviderScope(child: App()));
+  var tokenBox = await Hive.openBox('tokenStorage');
+  var storageBox = await Hive.openBox('storage');
+  runApp(ProviderScope(child: App()));
 }
 
 class App extends ConsumerWidget {
