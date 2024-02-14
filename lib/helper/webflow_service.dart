@@ -5,7 +5,6 @@ import 'package:writeflow/constant.dart';
 import 'package:writeflow/model/site.dart';
 import 'package:writeflow/model/token.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class WebFlowServices with ChangeNotifier {
   Future<token> getToken() async {
@@ -44,5 +43,3 @@ class WebFlowServices with ChangeNotifier {
     }
   }
 }
-
-final webflowProvider = Provider<WebFlowServices>((ref) => WebFlowServices());

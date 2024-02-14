@@ -55,18 +55,22 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
     ],
     redirect: (context, state) async {
-      var isAuthenticated = authState.isLoggedIn;
       var box = Hive.box('tokenStorage');
+      String myurl = Uri.base.toString();
+      var isAuthenticated = authState.isLoggedIn;
       if (box.get('token') != null ||
           box.get('token') != null && box.get('token') != "") {
         isAuthenticated = true;
       } else {
         isAuthenticated = false;
       }
-      String myurl = Uri.base.toString();
+
       if (box.get('token') == null && myurl.contains('redirect') ||
           box.get('token') == "" && myurl.contains('redirect')) {
         return '/${AppRoute.redirect.name}';
+      }
+      if (myurl.contains('authentication') && isAuthenticated) {
+        return '/';
       }
 
       /// null redirects to Initial Location

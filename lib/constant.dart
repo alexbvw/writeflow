@@ -18,14 +18,15 @@ const hereAutocompleteUrl = 'https://autocomplete.search.hereapi.com/v1/';
 
 const webflowAuthUrl = "https://webflow.com/";
 const webflowApiUrl = "https://api.webflow.com/";
-const webflowAuthServiceUrl = "https://a3a4-197-185-96-141.ngrok-free.app/api/";
+const webflowAuthServiceUrl = "https://39ea-197-184-168-3.ngrok-free.app/api/";
 
 const clientId =
     "b508ea1817364eab97ffd0a0757e9fd25f20a5398385b9752481e6009e3d628d";
 const clientSecret =
     "cddd9773a5b7298e4f481d5add75920e3ade45212a1191483979439b74e86d76";
 const redirectUri = "https://writeflow.acreative.co.za/redirect";
-const testToken = "123";
+const testToken =
+    "417331b54ab1472a7e04146675b77df0f2fda0ec6b21a912be112a989ce8cb4a";
 
 const kDefaultPadding = 20.0;
 const kDefaultShadow = BoxShadow(

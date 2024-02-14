@@ -26,12 +26,12 @@ class Redirect extends HookConsumerWidget {
       body: authenticateData.when(
           data: (authenticateData) {
             SizedBox();
-            context.goNamed(AppRoute.layout.name);
-            return null;
+            GoRouter.of(context).goNamed(AppRoute.layout.name);
+            // return null;
           },
           error: (err, s) => Text(err.toString()),
           loading: () => const Center(
-                child: CircularProgressIndicator(),
+                child: LinearProgressIndicator(),
               )),
     );
   }

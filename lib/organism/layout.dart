@@ -12,6 +12,8 @@ const String assetName = 'assets/images/writeflow-logo.svg';
 
 enum PageType { pulse, incomming, inventory, outgoing }
 
+final testProvider = StateProvider<bool>((ref) => false);
+
 class Layout extends ConsumerWidget {
   final List<Widget> _pageList = <Widget>[
     const Pulse(),
@@ -23,6 +25,7 @@ class Layout extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // bool isHover = ref.watch(testProvider);
     const tabItems = [
       BottomNavigationBarItem(
         icon: Icon(Icons.monitor_heart_outlined),
@@ -38,6 +41,12 @@ class Layout extends ConsumerWidget {
       ),
     ];
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: Text("New"),
+        icon: Icon(Icons.add),
+      ),
       endDrawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -68,7 +77,7 @@ class Layout extends ConsumerWidget {
         ),
       ),
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(150.0),
+        preferredSize: const Size.fromHeight(130.0),
         child: Column(
           children: [
             Padding(

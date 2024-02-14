@@ -1,6 +1,6 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:writeflow/helper/webflow_service.dart';
 import 'package:writeflow/model/site.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:writeflow/helper/webflow_provider.dart';
 
 final sitesProvider = FutureProvider<List<Site>>((ref) async {
   return ref.watch(webflowProvider).getSites();

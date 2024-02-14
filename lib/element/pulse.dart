@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:writeflow/constant.dart';
 import 'package:writeflow/helper/sites_provider.dart';
-import 'package:writeflow/helper/webflow_service.dart';
 import 'package:writeflow/model/site.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 
 class Pulse extends HookConsumerWidget {
   const Pulse({super.key});
@@ -15,32 +14,33 @@ class Pulse extends HookConsumerWidget {
     final selectedSiteState = ref.watch(selectedSiteProvider);
     var box = Hive.box('storage');
 
-    return Scaffold(
-      body: sites.when(
-        data: (List<Site> sites) {
-          // Initialize the selected site with the first site if it hasn't been set and sites are not empty
-          if (selectedSiteState == null && sites.isNotEmpty) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              ref.read(selectedSiteProvider.notifier).state = sites[0];
-              box.put("siteName", sites[0].displayName);
-              box.put("siteId", sites[0].id);
-            });
-          }
+    return sites.when(
+      data: (List<Site> sites) {
+        // Initialize the selected site with the first site if it hasn't been set and sites are not empty
+        if (selectedSiteState == null && sites.isNotEmpty) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            ref.read(selectedSiteProvider.notifier).state = sites[0];
+            box.put("siteName", sites[0].displayName);
+            box.put("siteId", sites[0].id);
+          });
+        }
 
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+        return Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+          child: SizedBox(
+            height: 200,
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(25.0),
                 child: Column(
                   children: [
-                    // Padding(
-                    //   padding: EdgeInsets.only(left: 20, right: 20),
-                    //   child: Text('Selec'),
-                    // ),
                     DropdownButton<Site>(
                       value: selectedSiteState,
                       isExpanded: true,
+                      dropdownColor: primaryColor,
+                      focusColor: Colors.transparent,
                       hint: Text('select site'),
+                      isDense: true,
                       items: sites.map((Site site) {
                         return DropdownMenuItem<Site>(
                           value: site,
@@ -56,16 +56,15 @@ class Pulse extends HookConsumerWidget {
                         // print(selectedSiteState);
                       },
                     ),
-                    // Additional widgets go here
                   ],
                 ),
               ),
-            ],
-          );
-        },
-        error: (error, stack) => Text('Error: $error'),
-        loading: () => Center(child: CircularProgressIndicator()),
-      ),
+            ),
+          ),
+        );
+      },
+      error: (error, stack) => Text('Error: $error'),
+      loading: () => Center(child: CircularProgressIndicator()),
     );
   }
 }

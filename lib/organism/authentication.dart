@@ -44,9 +44,9 @@ class LoginPage extends HookConsumerWidget {
                       MaterialStatePropertyAll<Color>(primaryColor),
                 ),
                 onPressed: () async {
-                  box.put('token',
-                      '417331b54ab1472a7e04146675b77df0f2fda0ec6b21a912be112a989ce8cb4a');
-                  // _launchURL(context);
+                  box.put('token', testToken);
+                  GoRouter.of(context).goNamed(AppRoute.layout.name);
+                  // login(context);
                 },
                 child: const Text(
                   "login with webflow",
@@ -81,7 +81,7 @@ class SplashPage extends StatelessWidget {
   }
 }
 
-void _launchURL(BuildContext context) async {
+void login(BuildContext context) async {
   final theme = Theme.of(context);
   try {
     await launchUrl(
