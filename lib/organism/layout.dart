@@ -16,9 +16,9 @@ final testProvider = StateProvider<bool>((ref) => false);
 
 class Layout extends ConsumerWidget {
   final List<Widget> _pageList = <Widget>[
-    const Pulse(),
-    const Collections(),
-    const Account(),
+    Pulse(),
+    Collections(),
+    Account(),
   ];
 
   Layout({super.key});

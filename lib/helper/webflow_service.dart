@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:writeflow/constant.dart';
+import 'package:writeflow/model/collection.dart';
 import 'package:writeflow/model/site.dart';
 import 'package:writeflow/model/token.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -38,6 +39,23 @@ class WebFlowServices with ChangeNotifier {
     if (response.statusCode == 200) {
       final List result = jsonDecode(response.body)['sites'];
       return result.map(((e) => Site.fromJson(e))).toList();
+    } else {
+      throw Exception(response.reasonPhrase);
+    }
+  }
+
+  Future<List<Collection>> getCollections() async {
+    var box = Hive.box('tokenStorage');
+    var token = box.get('token');
+    Response response =
+        await get(Uri.parse('${webflowAuthServiceUrl}collections'), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+    if (response.statusCode == 200) {
+      final List result = jsonDecode(response.body)['collections'];
+      return result.map(((e) => Collection.fromJson(e))).toList();
     } else {
       throw Exception(response.reasonPhrase);
     }
