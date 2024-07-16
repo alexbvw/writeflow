@@ -1,0 +1,5 @@
+    <ion-row class="ion-justify-content-center ion-padding">
+      <ion-select aria-label="Fruit" interface="popover" placeholder="Select Site">
+        <ion-select-option *ngFor="let site of sitesService.sites" value={{site.displayName}}>{{site.displayName}}</ion-select-option>
+      </ion-select>
+    </ion-row>

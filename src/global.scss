@@ -32,6 +32,49 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+@import "@ionic/angular/css/palettes/dark.always.css";
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+// @import "@ionic/angular/css/palettes/dark.system.css";
+*{
+    font-family: "Prompt", sans-serif;
+}
+#logo{
+    height: 4vh;
+    margin: 0 0 0 3.5vw;
+}
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+#menuToolbar{
+    --color: white;
+    --min-height: 80px;
+    --padding-top: 20px;
+    --border-width: 0px 0;
+    --padding-bottom: 20px;
+    --background: #1b1b1b;
+}
+#mainToolbar{
+    --color: white;
+    --padding-top: 10px;
+    --border-width: 0px 0;
+    --padding-bottom: 10px;
+    --background: #1b1b1b;
+    --box-shadow: none!important;
+    --webkit-box-shadow: none!important;
+}
+.header-md{
+    box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+}
+#tabs{
+    --color: white;
+    --min-height: 80px;
+    --padding-top: 20px;
+    --border-width: 0px 0;
+    --padding-bottom: 20px;
+    --background: #1b1b1b;
+    box-shadow: none!important;
+    -webkit-box-shadow: none!important;
+}

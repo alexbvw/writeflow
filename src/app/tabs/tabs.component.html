@@ -1,0 +1,40 @@
+<ion-menu [type]="menuType" content-id="main-content">
+  <ion-content class="ion-padding">
+    <ion-menu-toggle>
+      <ion-button>Click to close the menu</ion-button>
+    </ion-menu-toggle>
+    <ion-button (click)="logout()">logout</ion-button>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header id="header">
+    <ion-toolbar id="mainToolbar">
+      <!-- <ion-title > -->
+        <ion-img routerLink="/" slot="start" id="logo" src="assets/writeflow-logo.svg"></ion-img>
+      <!-- </ion-title> -->
+      <ion-buttons slot="end">
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-tabs>
+      <ion-tab-bar slot="top" id="tabs">
+        <ion-tab-button tab="pulse">
+          <ion-icon name="pulse-outline"></ion-icon>
+          <ion-label>pulse</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="collection">
+          <ion-icon name="server-outline"></ion-icon>
+          <ion-label>collection</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="account">
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>account</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-content>
+</div>
+

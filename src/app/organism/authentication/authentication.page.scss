@@ -1,0 +1,44 @@
+#authenticationContainer{
+    --display: flex;
+    --height: 100svh;
+    --align-items: center;
+    --background-blur: 100vw;
+    --flex-direction: column;
+    --justify-content: center;
+    --background: linear-gradient(120deg, #4353ff 0%, #2b2b2b 100%);
+}
+#authentication{
+    height: 50svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5svw 5svw 5svw 0;
+    #logo{
+        height: 5svw;
+        margin: 0svh 0svw 4svh 0svw;
+    }
+    ion-button{
+        text-transform: none;
+        --border-radius: 5vw 5vw 5vw 0;
+        --box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #authentication{
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 5vw 5vw 5vw 0;
+        #logo{
+            height: 15vw;
+            margin: 0vh 0vw 4vh 0vw;
+        }
+        ion-button{
+            text-transform: none;
+            --border-radius: 5vw 5vw 5vw 0;
+            --box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.15);
+        }
+    }   
+}
