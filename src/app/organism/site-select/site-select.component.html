@@ -1,5 +1,8 @@
-    <ion-row class="ion-justify-content-center ion-padding">
-      <ion-select aria-label="Fruit" interface="popover" placeholder="Select Site">
-        <ion-select-option *ngFor="let site of sitesService.sites" value={{site.displayName}}>{{site.displayName}}</ion-select-option>
+    
+    
+    <ion-row class="ion-justify-content-center ion-padding" *ngIf="!sitesService.sitesLoading">
+      <ion-select (ionChange)="changeSite($event)" interface="popover" placeholder="Select Site"  [compareWith]="compareWithFn" [value]="sitesService.selectedSite?.id">
+        <ion-select-option *ngFor="let site of sitesService.sites" [value]="site.id">{{site.displayName}}</ion-select-option>
       </ion-select>
     </ion-row>
+    <!-- <app-loader id="loader" *ngIf="sitesService.sitesLoading"></app-loader> -->

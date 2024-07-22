@@ -14,8 +14,8 @@ const routes: Routes = [
             loadChildren: () => import('../page/pulse/pulse.module').then( m => m.PulsePageModule)
           },
           {
-            path: 'collection',
-            loadChildren: () => import('../page/collection/collection.module').then( m => m.CollectionPageModule)
+            path: 'collections',
+            loadChildren: () => import('../page/collections/collections.module').then( m => m.CollectionPageModule)
           },
           {
             path: 'account',

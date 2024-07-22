@@ -6,13 +6,13 @@ import { AuthenticationService } from '../services/authentication.service';
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss'],
 })
-export class TabsComponent  implements OnInit {
+export class TabsComponent {
   menuType: string = 'overlay';
   constructor(public authenticationService: AuthenticationService) { }
 
-  ngOnInit() {
-    console.log('hello');
-  }
+  // ngOnInit() {
+  //   console.log('hello');
+  // }
 
   async logout(){
     this.authenticationService.logout();

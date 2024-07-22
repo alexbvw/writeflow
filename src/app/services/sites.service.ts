@@ -1,7 +1,7 @@
+import { firstValueFrom } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +9,8 @@ export class SitesService {
   serviceUrl = environment.webflow_service_url;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   sites: any = [];
+  sitesLoading = true;
+  selectedSite: any = null;
   constructor(
     private http: HttpClient
   ) { }

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AuthGuard } from './services/guard/authentication.guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: 'redirect',
     loadChildren: () => import('./organism/redirect/redirect.module').then( m => m.RedirectPageModule)
+  },
+  {
+    path: 'collection/:slug',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./page/single/collection/collection.module').then( m => m.CollectionPageModule)
   }
 ];
 
