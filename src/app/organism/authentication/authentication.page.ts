@@ -15,9 +15,9 @@ export class AuthenticationPage {
   // }
 
   async login() {
-    localStorage.setItem('token', this.token);
-    this.authenticationService.router.navigate(['/tabs/pulse']);
-    // window.open(this.authenticationService.webflowAuthUrl, '_self');
+    // localStorage.setItem('token', this.token);
+    // this.authenticationService.router.navigate(['/tabs/pulse']);
+    window.open(this.authenticationService.webflowAuthUrl, '_self');
   }
 
 }

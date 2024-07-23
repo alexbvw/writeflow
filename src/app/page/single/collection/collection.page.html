@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{collectionsService?.collection?.displayName}}</ion-title>
+    <ion-title>{{collectionsService!.collection?.displayName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
         <ion-item-option color="success">Archive</ion-item-option>
       </ion-item-options>
   
-         <ion-item [button]="true"  id="itemItem" router-direction="forward" >
+         <ion-item [button]="true"  id="itemItem" router-direction="forward" (click)="navItem(item)">
           <ion-icon color="primary" slot="start" name="document-outline" size="large"></ion-icon>
           <ion-label>{{item?.fieldData?.name}}</ion-label>
           <!-- <ion-note slot="end">{{item?.items?.length}}</ion-note> -->

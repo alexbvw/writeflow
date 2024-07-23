@@ -19,6 +19,11 @@ const routes: Routes = [
     path: 'collection/:slug',
     canActivate: [AuthGuard],
     loadChildren: () => import('./page/single/collection/collection.module').then( m => m.CollectionPageModule)
+  },
+  {
+    path: 'item/:slug',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./page/single/item/item.module').then( m => m.ItemPageModule)
   }
 ];
 

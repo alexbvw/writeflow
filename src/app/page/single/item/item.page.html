@@ -1,0 +1,37 @@
+<ion-header [translucent]="true" *ngIf="!itemsService.itemLoading">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{itemsService?.item?.fieldData?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-progress-bar type="indeterminate" *ngIf="itemsService.itemLoading"></ion-progress-bar>
+  <ion-list  id="item">
+    <ion-item *ngFor="let field of fields" id="fieldItem">
+      <!-- <ion-input
+        label="Input with clear button"
+        labelPlacement="stacked"
+        [clearInput]="true"
+        placeholder="Enter text to see clear button"
+        value="Default value"
+      >
+      </ion-input> -->
+      <ion-input 
+        id="field"
+        fill="outline" 
+        type={{field.type}} 
+        value="{{field?.data}}"
+        label-placement="floating" 
+        label={{field.displayName}} 
+        placeholder={{field?.helpText}} 
+        *ngIf="field.type === 'PlainText' || field.type === 'Number'" 
+      >
+    </ion-input>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

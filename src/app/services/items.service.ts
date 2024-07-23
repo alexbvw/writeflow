@@ -6,7 +6,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ItemsService {
+  item: any = {};
   items: any = [];
+  itemLoading = true;
   itemsLoading = true;
   serviceUrl = environment.webflow_service_url;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -32,7 +34,7 @@ export class ItemsService {
   // Get a specific Webflow Item by Item ID
   async getItem(collectionId:any,itemId: any) {
     await this.setAuthHeader(localStorage.getItem('token') || '');
-    let url = `${this.serviceUrl}/collections/${collectionId}/items/${itemId}`;
+    let url = `${this.serviceUrl}collections/${collectionId}/items/${itemId}`;
     return firstValueFrom(this.http.request(
       'GET',
       url,

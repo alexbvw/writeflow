@@ -54,5 +54,11 @@ export class CollectionPage {
     })
   }
 
+  navItem(item:any){
+    localStorage.setItem('activeFields', JSON.stringify(this.collectionsService.collection?.fields))
+    console.log(item)
+    localStorage.setItem('itemId', item?.id)
+    this.router.navigate([`/item/${item?.fieldData?.slug}`]);
+  }
 
 }

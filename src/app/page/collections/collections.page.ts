@@ -32,7 +32,6 @@ export class CollectionsPage {
     }
   }
 
-
   async getCollections(siteId:any){
     this.collectionsService.collectionsLoading = true;
     await this.collectionsService.getCollections(siteId)
