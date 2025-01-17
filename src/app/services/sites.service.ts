@@ -9,6 +9,7 @@ export class SitesService {
   serviceUrl = environment.webflow_service_url;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   sites: any = [];
+  siteId: any;
   sitesLoading = true;
   selectedSite: any = null;
   constructor(

@@ -4,13 +4,14 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { TabsComponent } from './tabs.component';
 import { TabsRoutingModule } from './tabs-routing.module';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
-    // FormsModule,
+    DirectivesModule,
     TabsRoutingModule
   ],
   declarations: [TabsComponent],

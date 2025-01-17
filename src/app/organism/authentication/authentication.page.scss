@@ -12,15 +12,60 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 5svw 5svw 5svw 0;
+    border-radius: 5vw 5vw 5vw 0;
     #logo{
-        height: 5svw;
-        margin: 0svh 0svw 4svh 0svw;
+        height: 5vw;
+        margin: 0svh 0vw 4svh 0vw;
     }
     ion-button{
         text-transform: none;
         --border-radius: 5vw 5vw 5vw 0;
         --box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.15);
+    }
+}
+swiper-container {
+    height: 100%;
+}
+
+swiper-slide {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+}
+
+swiper-slide img {
+    margin: 0 auto;
+    height: 75vw;
+    padding: 5% 15%;
+}
+
+.slider-text {
+    padding: 5% 0%;
+}
+
+.slider-text p {
+    font-weight: 200;
+}
+
+.slider-text h2 {
+    font-weight: 600;
+}
+
+.slider-text h5 {
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+.navigator {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    .login{
+        width: 100%;
     }
 }
 
@@ -42,3 +87,4 @@
         }
     }   
 }
+

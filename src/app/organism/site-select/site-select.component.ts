@@ -53,6 +53,7 @@ async changeSite(event: any) {
     if (selectedSite) {
       this.sitesService.selectedSite = selectedSite;
       localStorage.setItem('siteId', selectedSiteId);
+      await this.getCollections(selectedSiteId);
       console.log(this.sitesService.selectedSite);
     }
   }

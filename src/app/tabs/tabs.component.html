@@ -1,9 +1,19 @@
-<ion-menu [type]="menuType" content-id="main-content">
+<ion-menu [type]="menuType" side="end" content-id="main-content">
   <ion-content class="ion-padding">
-    <ion-menu-toggle>
+    <!-- <ion-menu-toggle>
       <ion-button>Click to close the menu</ion-button>
-    </ion-menu-toggle>
-    <ion-button (click)="logout()">logout</ion-button>
+    </ion-menu-toggle> -->
+    <ion-header class="ion-no-border ion-padding-vertical sideBarHeader">
+      <ion-img routerLink="/" slot="start" id="logo" src="assets/writeflow-logo.svg"></ion-img>
+    </ion-header>
+    <ion-list lines="full" color="transparent">
+      <ion-item [button]="true" color="transparent">
+        <ion-icon color="danger" slot="start" name="list-circle" size="large"></ion-icon>
+        <ion-label>General</ion-label>
+        <ion-note slot="end">6</ion-note>
+      </ion-item>
+    </ion-list>
+    <ion-button class="ion-margin-top" color="danger" expand="block" (click)="logout()">logout</ion-button>
   </ion-content>
 </ion-menu>
 
@@ -11,7 +21,7 @@
   <ion-header id="header">
     <ion-toolbar id="mainToolbar">
       <!-- <ion-title > -->
-        <ion-img routerLink="/" slot="start" id="logo" src="assets/writeflow-logo.svg"></ion-img>
+      <ion-img routerLink="/" slot="start" id="logo" src="assets/writeflow-logo.svg"></ion-img>
       <!-- </ion-title> -->
       <ion-buttons slot="end">
         <ion-menu-button color="primary"></ion-menu-button>
@@ -19,7 +29,12 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-tabs>
+    <ion-tabs
+      #tabs
+      appGesture
+      [gestureOpts]="[{enabled: true,name: 'swipe', interval: 250, threshold: 15, reportInterval: 'start', direction: ['left', 'right']}]"
+      (swipe)="onSwipe($event)"
+    >
       <ion-tab-bar slot="top" id="tabs">
         <ion-tab-button tab="pulse">
           <ion-icon name="pulse-outline"></ion-icon>

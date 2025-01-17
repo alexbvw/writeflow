@@ -24,7 +24,7 @@ export class RedirectPage implements OnInit {
         .then(async (res: any) => {
           console.log(res)
           localStorage.setItem('token', await res?.response?.access_token);
-          await this.router.navigate(['/tabs/pulse']);
+          await this.router.navigate(['/pulse']);
         })
         .catch((err: any) => {
           console.log(err)

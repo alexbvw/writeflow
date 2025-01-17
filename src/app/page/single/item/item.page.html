@@ -3,34 +3,74 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{itemsService?.item?.fieldData?.name}}</ion-title>
+    <!-- <ion-title>{{itemsService?.item?.fieldData?.name}}</ion-title> -->
+    <ion-button 
+      class="ion-margin"
+      slot="end" 
+      size="small"
+      [color]=" itemsService?.item?.status === 'isPublished'? 'secondary' : 'primary'" 
+      (click)="publishItemChanges()"
+    >
+      Publish Changes
+    <ion-icon slot="end" name="checkmark-done-circle-outline"></ion-icon>
+  </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-progress-bar type="indeterminate" *ngIf="itemsService.itemLoading"></ion-progress-bar>
-  <ion-list  id="item">
-    <ion-item *ngFor="let field of fields" id="fieldItem">
-      <!-- <ion-input
-        label="Input with clear button"
-        labelPlacement="stacked"
-        [clearInput]="true"
-        placeholder="Enter text to see clear button"
-        value="Default value"
-      >
-      </ion-input> -->
-      <ion-input 
+  <ion-list id="item">
+    <span *ngFor="let field of fields">
+    <ion-item  *ngIf="field.type === 'Number'" id="fieldItem">
+      <ion-input
         id="field"
         fill="outline" 
-        type={{field.type}} 
-        value="{{field?.data}}"
+        [(ngModel)]="field.data"
+        type={{field?.type}}
         label-placement="floating" 
         label={{field.displayName}} 
         placeholder={{field?.helpText}} 
-        *ngIf="field.type === 'PlainText' || field.type === 'Number'" 
       >
-    </ion-input>
+      </ion-input>
     </ion-item>
+    <ion-item  *ngIf="field.type === 'PlainText'" id="fieldItem">
+      <ion-textarea
+        auto-grow
+        id="field"
+        fill="outline" 
+        [(ngModel)]="field.data"
+        label-placement="floating" 
+        label={{field?.displayName}} 
+        name="{{field?.slug}}"
+        placeholder={{field?.helpText}} 
+      >
+      </ion-textarea>
+    </ion-item>
+    <ion-item  *ngIf="field.type === 'RichText'" id="fieldItem">
+      <div class="editor">
+        <ion-label>{{field.displayName}}</ion-label>
+        <div class="NgxEditor__Wrapper">
+        <ngx-editor-floating-menu [editor]="editors[field?.editorNumber]"> </ngx-editor-floating-menu>
+        <ngx-editor 
+        [editor]="editors[field?.editorNumber]" 
+        [ngModel]="field?.data" 
+        [disabled]="false" 
+        [placeholder]="'Type here...'"
+        (ngModelChange)="editorChange($event,field)"
+        ></ngx-editor>
+      </div>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="field.type === 'Image'" >
+      <div id="fieldImageItem">
+        <ion-label>{{field.displayName}}</ion-label>
+        <ion-img  src="{{field?.data?.url}}" onload="this.onerror=null;this.src='assets/placeholder.svg'" onerror="this.src='assets/placeholder.svg'"></ion-img>
+        <ion-button [color]="itemsService?.item?.status === 'Published'? 'primary' : 'primary'" size="small">
+          Change Image
+        </ion-button>
+      </div>
+    </ion-item>
+  </span>
   </ion-list>
 
 

@@ -4,12 +4,7 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content [fullscreen]="true" id="authenticationContainer">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">authentication</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
+<ion-content [fullscreen]="true" id="authenticationContainer" *ngIf="!authenticationService.firstVisit">
   <ion-card id="authentication" color="dark">
     <ion-img id="logo" src="assets/writeflow-logo.svg"></ion-img>
       <ion-button 
@@ -27,3 +22,71 @@
     <iframe width="100%" height="100%" [src]="url"></iframe>
   </ion-card>
 </ion-content>
+
+<ion-content class="ion-padding" *ngIf="authenticationService.firstVisit">
+  <swiper-container pager="true"  [slidesPerView]="1" #newSwiper>
+    <swiper-slide class="ion-padding">
+      <img src="assets/writeflow-w.svg" >
+
+      <div class="slider-text">
+        <h2>Welcome to Writeflow!</h2>
+        <h5>Welcome to Effortless Webflow Management</h5>
+        <p>
+          Say goodbye to complicated updates. Writeflow streamlines your Webflow site management,
+          giving you full control over your content with just a few clicks.
+          Lets make your site work for you, not the other way around.
+        </p>
+      </div>
+
+      <div class="navigator">
+        <ion-button color="primary" fill="clear" (click)="skip(2)">SKIP</ion-button>
+        <ion-button color="primary" fill="clear" (click)=" next()">NEXT</ion-button>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="ion-padding">
+      <img src="assets/simple.svg" >
+
+      <div class="slider-text">
+        <h2>Simple and Intuitive</h2>
+        <h5>Your Content, Your Way</h5>
+        <p>
+          With Writeflow, managing your Webflow site has never been easier.
+          Whether you need to update text, swap images, or adjust layouts, our user-friendly interface lets you do it all in minutes, without touching a single line of code.
+        </p>
+      </div>
+
+      <div class="navigator">
+        <ion-button color="primary" fill="clear" (click)="back()">BACK</ion-button>
+        <ion-button color="primary" fill="clear" (click)="next()">NEXT</ion-button>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="ion-padding">
+      <img src="assets/started.svg" >
+
+      <div class="slider-text">
+        <h2>Ready to Get Started?</h2>
+        <h5>Take Control of Your Website</h5>
+        <p>
+          Dive in and see how Writeflow transforms your Webflow experience.
+          Explore powerful tools designed to make site management a breeze.
+          Start your journey today and see the difference.
+        </p>
+      </div>
+
+
+    <div class="navigator">
+      <ion-button 
+      color="light" 
+      shape="round" 
+      fill="outline" 
+      expand="full"
+      class="login"
+      (click)="login()"
+      > 
+      continue with webflow 
+    </ion-button>
+    </div>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>
+

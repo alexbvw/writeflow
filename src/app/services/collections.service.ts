@@ -10,6 +10,7 @@ export class CollectionsService {
   collections: any = [];
   collectionLoading = true;
   collectionsLoading = true;
+  collectionId: any;
   serviceUrl = environment.webflow_service_url;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(

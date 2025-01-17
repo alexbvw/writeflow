@@ -15,6 +15,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angul
 export class AuthenticationService {
   userId:any;
   decoded:any;
+  firstVisit = false;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   webflowAuthUrl = `${environment.webflow_auth_url}?client_id=${environment.client_id}&response_type=${environment.response_type}&scope=${environment.scope}&redirect_uri=${environment.redirect_uri}&state=${environment.state}`;
 
@@ -52,8 +53,9 @@ export class AuthenticationService {
   logout(){
     let removeToken = localStorage.removeItem('token');
     if(removeToken == null) {
-      this.router.navigate(['authentication']);
-      localStorage.clear();
+      this.firstVisit = false;
+      this.router.navigateByUrl('authentication');
+      // window.open('/', '_self');
     }
   }
   

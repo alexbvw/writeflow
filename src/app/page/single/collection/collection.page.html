@@ -9,14 +9,14 @@
 
 <ion-content [fullscreen]="true">
   <ion-progress-bar type="indeterminate" *ngIf="itemsService.itemsLoading"></ion-progress-bar>
-  <ion-list *ngIf="!itemsService.itemsLoading" id="items">
+  <ion-list *ngIf="!itemsService.itemsLoading" id="items" lines="full">
     <ion-item-sliding *ngFor="let item of itemsService.items" id="item">
       <ion-item-options side="start">
         <ion-item-option color="success">Archive</ion-item-option>
       </ion-item-options>
   
          <ion-item [button]="true"  id="itemItem" router-direction="forward" (click)="navItem(item)">
-          <ion-icon color="primary" slot="start" name="document-outline" size="large"></ion-icon>
+          <ion-icon color="primary" slot="end" name="document-text-outline" size="large"></ion-icon>
           <ion-label>{{item?.fieldData?.name}}</ion-label>
           <!-- <ion-note slot="end">{{item?.items?.length}}</ion-note> -->
         </ion-item>
