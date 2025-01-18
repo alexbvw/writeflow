@@ -1,29 +1,17 @@
-<ion-header [translucent]="true" *ngIf="!itemsService.itemLoading">
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
-    <ion-title size="small">{{itemsService.item?.fieldData?.name}}</ion-title>
-  </ion-toolbar>
-  <ion-toolbar id="toolbarSmall" color="primary">
-    <!-- <ion-title>{{itemsService?.item?.fieldData?.name}}</ion-title> -->
-    <ion-button 
-      class="ion-margin ion-no-border ion-no-shadow"
-      slot="end" 
-      size="small"
-     
-      (click)="publishItemChanges()"
-    >
-      Publish
-    <ion-icon slot="end" name="checkmark-done-circle-outline"></ion-icon>
-  </ion-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-progress-bar type="indeterminate" *ngIf="itemsService.itemLoading"></ion-progress-bar>
+  <!-- <ion-progress-bar type="indeterminate" *ngIf="itemsService.itemLoading"></ion-progress-bar> -->
   <ion-list id="itemsTop">
-    <span *ngFor="let field of fields">
+    <span *ngFor="let field of activeFields">
     <ion-item *ngIf="field.type === 'PlainText' && field.slug === 'name' || field.type === 'PlainText' && field.slug === 'slug'" id="fieldItem">
       <ion-textarea
         auto-grow
@@ -40,7 +28,7 @@
   </span>
   </ion-list>
   <ion-list id="itemsBottom">
-    <span *ngFor="let field of fields">
+    <span *ngFor="let field of activeFields">
   
     <ion-item *ngIf="field.type === 'PlainText' && field.slug !== 'name' && field.slug !== 'slug'" id="fieldItem">
       <ion-textarea
@@ -69,7 +57,7 @@
       </ion-input>
     </ion-item>
 
-    <ion-item *ngIf="field.type === 'RichText'" id="fieldItem">
+    <!-- <ion-item *ngIf="field.type === 'RichText'" id="fieldItem">
       <div id="editor">
         <ion-label>{{field.displayName}}</ion-label>
         <div class="NgxEditor__Wrapper">
@@ -83,9 +71,9 @@
         ></ngx-editor>
       </div>
       </div>
-    </ion-item>
+    </ion-item> -->
 
-    <ion-item *ngIf="field.type === 'Image'" >
+    <!-- <ion-item *ngIf="field.type === 'Image'" >
       <div id="fieldImageItem">
         <ion-label>{{field.displayName}}</ion-label>
         <ion-img src="{{field?.data?.url}}" onload="this.onerror=null;this.src='assets/placeholder.svg'" onerror="this.src='assets/placeholder.svg'"></ion-img>
@@ -93,7 +81,7 @@
           Change Image
         </ion-button>
       </div>
-    </ion-item>
+    </ion-item> -->
 
   </span>
   </ion-list>

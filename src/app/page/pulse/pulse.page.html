@@ -1,12 +1,12 @@
 <ion-content [fullscreen]="true">
   <ion-progress-bar type="indeterminate" *ngIf="sitesService.sitesLoading"></ion-progress-bar>
   <app-site-select></app-site-select>
-  <ion-grid *ngIf="!sitesService.sitesLoading">
-    <ion-row>
+  <ion-grid *ngIf="!sitesService.sitesLoading" class="ion-no-padding">
+    <ion-row class="ion-no-padding">
       <ion-col size="12" class="ion-no-padding">
         <ion-card color="primary" class="ion-no-padding">
           <ion-card-header>
-            <ion-card-title>{{sitesService?.sites?.length}}</ion-card-title>
+            <ion-card-title>{{sitesService.sites?.length}}</ion-card-title>
             <ion-card-subtitle>sites</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
@@ -14,8 +14,8 @@
       <ion-col size="12" class="ion-no-padding" *ngIf="collectionsService?.collections?.length">
         <ion-card color="primary" class="ion-no-padding">
           <ion-card-header>
-            <ion-card-title>{{collectionsService?.collections?.length}}</ion-card-title>
-            <ion-card-subtitle>collections</ion-card-subtitle>
+            <ion-card-title>{{collectionsService.collections?.length}}</ion-card-title>
+            <ion-card-subtitle>{{collectionsService.collections?.length === 1 ? 'collection' : 'collections'}}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>

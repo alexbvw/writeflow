@@ -66,6 +66,7 @@ export class CollectionsPage {
   navCollection(collection:any){
     console.log(collection)
     localStorage.setItem('collectionId', collection.id)
+    // localStorage.setItem('activeFields', JSON.stringify(collection.fields))
     this.router.navigate([`/collection/${collection.slug}`]);
   }
 

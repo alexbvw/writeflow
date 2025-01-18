@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { CollectionPage } from './collection.page';
 import { CollectionPageRoutingModule } from './collection-routing.module';
+import { AddItemComponent } from 'src/app/organism/add-item/add-item.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -11,6 +12,6 @@ import { CollectionPageRoutingModule } from './collection-routing.module';
     IonicModule,
     CollectionPageRoutingModule
   ],
-  declarations: [CollectionPage]
+  declarations: [CollectionPage, AddItemComponent]
 })
 export class CollectionPageModule {}

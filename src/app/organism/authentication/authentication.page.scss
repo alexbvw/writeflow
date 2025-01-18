@@ -5,11 +5,14 @@
     --background-blur: 100vw;
     --flex-direction: column;
     --justify-content: center;
-    --background: linear-gradient(120deg, #4353ff 0%, #2b2b2b 100%);
+    --background-size: cover;
+    --background-position: center;
+    --background: linear-gradient(-120deg, #4353ff 0%, #2b2b2b 100%);
 }
 #authentication{
-    height: 50svh;
+    height: 30svh;
     display: flex;
+    align-self: center;
     flex-direction: column;
     justify-content: center;
     border-radius: 5vw 5vw 5vw 0;

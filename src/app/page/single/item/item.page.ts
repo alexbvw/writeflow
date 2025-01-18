@@ -1,6 +1,9 @@
 import { Editor, toHTML } from 'ngx-editor';
 import { Component, OnInit } from '@angular/core';
+
 import { ItemsService } from 'src/app/services/items.service';
+import { CollectionsService } from 'src/app/services/collections.service';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-item',
   templateUrl: './item.page.html',
@@ -8,10 +11,16 @@ import { ItemsService } from 'src/app/services/items.service';
 })
 export class ItemPage {
   // editor: Editor = new Editor();
+  isPublished = false
   editors: Editor[] = []  
   fields:any = []
+  
   public editorContent: string = 'My initial content';
-  constructor(public itemsService: ItemsService) { }
+  constructor(
+    public itemsService: ItemsService,
+    public collectionsService: CollectionsService,
+    private toastController: ToastController
+  ) { }
   html:any
   // ngOnInit() {
   // }
@@ -34,11 +43,9 @@ export class ItemPage {
       await this.getItem(collectionId,itemId)
       this.itemsService.itemLoading = false
     }
-
   }
 
   ionViewWillLeave() {
-    // this.editor.destroy();
     this.itemsService.itemLoading = true
     for(let [editorIndex, editor] of this.editors.entries()){
       console.log(editorIndex)
@@ -52,38 +59,100 @@ export class ItemPage {
       console.log(this.itemsService.item)
       if(localStorage.getItem('activeFields')){
         this.fields = JSON.parse(localStorage.getItem('activeFields') || '')
-        console.log(JSON.parse(localStorage.getItem('activeFields') || ''))
+        // console.log(JSON.parse(localStorage.getItem('activeFields') || ''))
       }
-      for(let [fieldIndex, field] of this.fields.entries()){     
+       for(let [fieldIndex, field] of await this.fields.entries()){     
         if(this.itemsService.item?.fieldData?.[field.slug]){
-          this.fields[fieldIndex].data = this.itemsService.item?.fieldData?.[field.slug]
-          // if(field.type === 'Image' && !this.fields[fieldIndex].data?.url){
-          //   this.fields[fieldIndex].data.url = '/placeholder.svg'
-          // }
+          this.fields[fieldIndex].data = await this.itemsService.item?.fieldData?.[field.slug]
         }
         if(field.type === 'Image' && !this.itemsService.item?.fieldData?.[field.slug]){
           this.fields[fieldIndex].data = {url: 'assets/placeholder.svg'}
-          console.log(field.slug, field.type)
+          // console.log(field.slug, field.type)
         } 
         if(field.type === 'RichText'){
           this.editors.push(new Editor({
             
           }))
-          this.fields[fieldIndex].editorNumber = this.editors.length - 1
-          console.log(this.editors)
-        }
-      }
-      this.fields = this.fields.reverse()
-    
+          this.fields[fieldIndex].editorNumber =  this.editors.length - 1
+          // console.log(this.editors)
+        }      }
+      // this.fields = this.fields.reverse()
+      this.itemsService.itemLoading = false
     })
     .catch((err: any) => {
       console.log(err)
     })
   }
 
-  publishItemChanges(){
+  async publishItemChanges(){
     console.log(this.fields)
-    
+    this.collectionsService.collectionId = localStorage.getItem('collectionId')
+    await this.updateCollectionItems(this.collectionsService.collectionId)
+    await this.presentToast('bottom', 'Item updated successfully')
+  }
+  async presentToast(position: 'top' | 'middle' | 'bottom', message?: any) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: position,
+    });
+
+    await toast.present();
+  }
+  
+  // {
+  //   "isArchived": false,
+  //   "isDraft": false,
+  //   "items": 
+  //    [
+  //      {
+  //        "id": "669ab5a9104439b21645bd85",
+  //        "fieldData": {
+  //           "country": "Vestibulum b",
+  //          "city": "Vivamus te"
+  //         }
+  //      }
+  //     ]
+  // }
+
+  async updateCollectionItems(collectionId: any) {
+
+    this.itemsService.itemId = localStorage.getItem('itemId')
+    let updatedArray = []
+    for(let [fieldIndex, field] of this.fields.entries()){
+      updatedArray.push({
+        [field.slug]: field.data
+      })
+    }
+    console.log(updatedArray,collectionId)
+
+    const mappedFields = updatedArray.reduce((acc: any, item: any) => {
+      // For each item, we only expect one key
+      const [ key ] = Object.keys(item); 
+      acc[key] = item[key];
+      return acc;
+    }, {} as Record<string, any>);
+
+    let jsonData = {
+      isArchived: false,
+      isDraft: false,
+      items: [
+         {
+           "id": this.itemsService.itemId,
+           "fieldData": mappedFields
+         }
+      ]
+    }
+    console.log(jsonData)
+    this.itemsService.updateCollectionItems(collectionId, jsonData)
+    .then((res: any) => {
+      console.log(res)
+      this.getItem(this.collectionsService.collectionId,this.itemsService.itemId)
+    })
+    .catch((err: any) => {
+      console.log(err)
+    })
+
   }
 
 }

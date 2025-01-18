@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ItemsService {
   item: any = {};
+  itemId: any = '';
   items: any = [];
   itemLoading = true;
   itemsLoading = true;
@@ -41,4 +42,16 @@ export class ItemsService {
       { headers: this.headers }
     ));
   }
+
+  async updateCollectionItems(collectionId: any, data: any) {
+    await this.setAuthHeader(localStorage.getItem('token') || '');
+    let url = `${this.serviceUrl}collection/${collectionId}/items`;
+    return firstValueFrom(this.http.request(
+      'PUT',
+      url,
+      { headers: this.headers, body: data }
+   ));
+  }
+
 }
+// https://localhost:444/v1/webflow/collections/669b72d74bb30c4fec719e3e/items

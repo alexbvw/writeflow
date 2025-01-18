@@ -4,6 +4,31 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{collectionsService!.collection?.displayName}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="click-trigger">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+      <ion-popover trigger="click-trigger" triggerAction="click" side="bottom" alignment="start">
+        <ng-template>
+          <ion-content>
+            <ion-list lines="full">
+              <ion-item [button]="true" [detail]="false" (click)="openModal()">Add New {{collectionsService!.collection?.displayName.slice(0, -1)}}</ion-item>
+              <!-- <ion-item [button]="true" [detail]="false">Option 2</ion-item> -->
+              <!-- <ion-item [button]="true" id="nested-trigger">More options...</ion-item>
+              <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
+                <ng-template>
+                  <ion-content>
+                    <ion-list>
+                      <ion-item [button]="true" [detail]="false">Nested option</ion-item>
+                    </ion-list>
+                  </ion-content>
+                </ng-template>
+              </ion-popover> -->
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +37,7 @@
   <ion-list *ngIf="!itemsService.itemsLoading" id="items" lines="full">
     <ion-item-sliding *ngFor="let item of itemsService.items" id="item">
       <ion-item-options side="start">
-        <ion-item-option color="success">Archive</ion-item-option>
+        <ion-item-option color="warning">Unpublish</ion-item-option>
       </ion-item-options>
   
          <ion-item [button]="true"  id="itemItem" router-direction="forward" (click)="navItem(item)">
@@ -22,7 +47,6 @@
         </ion-item>
   
       <ion-item-options side="end">
-        <ion-item-option>Favorite</ion-item-option>
         <ion-item-option color="danger">Delete</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>

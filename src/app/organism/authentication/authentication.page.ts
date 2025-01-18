@@ -11,7 +11,7 @@ export class AuthenticationPage implements OnInit {
   url:any = '';
   @ViewChild('newSwiper') newSwiper: any;
   constructor(public authenticationService: AuthenticationService, private domSanitizer: DomSanitizer) { }
-  token:any = "b6e35b763b541d2cec26d61c8cf15e2fe13c85b2f504122a15c0496d4c6c394a"
+  // token:any = "b6e35b763b541d2cec26d61c8cf15e2fe13c85b2f504122a15c0496d4c6c394a"
   async ngOnInit() {
     if(localStorage.getItem('firstView') === 'false'){
       this.authenticationService.firstVisit = false;
@@ -38,10 +38,10 @@ export class AuthenticationPage implements OnInit {
   }
 
   async login() {
-    localStorage.setItem('token', this.token);
+    // localStorage.setItem('token', this.token);
     localStorage.setItem('firstView', 'false');
-    this.authenticationService.router.navigate(['/pulse']);
-    // window.open(this.authenticationService.webflowAuthUrl, '_self');
+    // this.authenticationService.router.navigate(['/pulse']);
+    window.open(this.authenticationService.webflowAuthUrl, '_self');
   }
 
 }

@@ -2,17 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsService } from 'src/app/services/items.service';
 import { CollectionsService } from 'src/app/services/collections.service';
-
+import { ModalController } from '@ionic/angular';
+import { AddItemComponent } from 'src/app/organism/add-item/add-item.component';
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.page.html',
   styleUrls: ['./collection.page.scss'],
 })
 export class CollectionPage {
+  // message = 'This modal example uses the modalController to present and dismiss modals.';
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     public itemsService: ItemsService,
+    private modalCtrl: ModalController,
     public collectionsService: CollectionsService,
   ) { }
 
@@ -29,12 +33,26 @@ export class CollectionPage {
 
   // }
 
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: AddItemComponent,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    // if (role === 'confirm') {
+    //   this.message = `Hello, ${data}!`;
+    // }
+  }
+
   async getCollection(collectionId:any){
     this.collectionsService.collectionLoading = true
     await this.collectionsService.getCollection(collectionId)
     .then(async (res: any) => {
       this.collectionsService.collection = await res;
       console.log(this.collectionsService.collection)
+      localStorage.setItem('activeFields', JSON.stringify(this.collectionsService.collection?.fields))
       await this.getItems(this.collectionsService.collection?.id)
     })
     .catch((err: any) => {

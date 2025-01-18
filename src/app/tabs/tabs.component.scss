@@ -2,6 +2,17 @@
     display: flex;
     flex-direction: column;
 }
-.sideBarHeader{
+#sideBarHeader{
     display: flex;
+   
+}
+#sideBarHeaderList{
+    ion-icon{
+        margin: 0vw 1vw;
+    }
+}
+#tabs{
+    ion-label{
+        font-size: 2.45vw;
+    }
 }

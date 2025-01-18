@@ -4,6 +4,8 @@
         // margin-bottom: 4vw;
         #itemItem{
             ion-label{
+                font-size: 3.5vw;
+                line-height: 4vw;
                 font-family: "Prompt", sans-serif;
             }
             ion-note{
@@ -12,3 +14,6 @@
         }
     }
 }
+// ion-item{
+//     border: none;
+// }
