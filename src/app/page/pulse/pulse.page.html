@@ -7,7 +7,7 @@
         <ion-card color="primary" class="ion-no-padding">
           <ion-card-header>
             <ion-card-title>{{sitesService.sites?.length}}</ion-card-title>
-            <ion-card-subtitle>sites</ion-card-subtitle>
+            <ion-card-subtitle>{{sitesService.sites?.length === 1 ? 'Site' : 'Sites'}}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>
@@ -15,7 +15,7 @@
         <ion-card color="primary" class="ion-no-padding">
           <ion-card-header>
             <ion-card-title>{{collectionsService.collections?.length}}</ion-card-title>
-            <ion-card-subtitle>{{collectionsService.collections?.length === 1 ? 'collection' : 'collections'}}</ion-card-subtitle>
+            <ion-card-subtitle>{{collectionsService.collections?.length === 1 ? 'Collection' : 'Collections'}}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-col>

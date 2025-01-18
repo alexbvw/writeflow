@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsService } from 'src/app/services/items.service';
 import { CollectionsService } from 'src/app/services/collections.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { AddItemComponent } from 'src/app/organism/add-item/add-item.component';
 @Component({
   selector: 'app-collection',
@@ -18,6 +18,7 @@ export class CollectionPage {
     public itemsService: ItemsService,
     private modalCtrl: ModalController,
     public collectionsService: CollectionsService,
+    public popOverController: PopoverController
   ) { }
 
   async ionViewWillEnter(){
@@ -38,7 +39,7 @@ export class CollectionPage {
       component: AddItemComponent,
     });
     modal.present();
-
+    this.popOverController.dismiss()
     const { data, role } = await modal.onWillDismiss();
 
     // if (role === 'confirm') {

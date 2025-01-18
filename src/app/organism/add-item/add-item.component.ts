@@ -13,6 +13,11 @@ export class AddItemComponent {
 
   ionViewWillEnter() {
     this.activeFields = JSON.parse(localStorage.getItem('activeFields') ?? '');
+    for (let field of this.activeFields) {
+      if(field.type === 'Image'){
+        field.data = {url: 'assets/placeholder.svg'}
+      }
+    }
     console.log(this.activeFields);
   }
 

@@ -5,10 +5,10 @@
     </ion-buttons>
     <ion-title>{{collectionsService!.collection?.displayName}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button id="click-trigger">
+      <ion-button size="large" id="add-item-trigger">
         <ion-icon name="add-outline"></ion-icon>
       </ion-button>
-      <ion-popover trigger="click-trigger" triggerAction="click" side="bottom" alignment="start">
+      <ion-popover trigger="add-item-trigger" triggerAction="click" side="bottom" alignment="start">
         <ng-template>
           <ion-content>
             <ion-list lines="full">

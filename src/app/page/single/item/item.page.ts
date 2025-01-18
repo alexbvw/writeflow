@@ -1,9 +1,9 @@
 import { Editor, toHTML } from 'ngx-editor';
+import { ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-
 import { ItemsService } from 'src/app/services/items.service';
 import { CollectionsService } from 'src/app/services/collections.service';
-import { ToastController } from '@ionic/angular';
+
 @Component({
   selector: 'app-item',
   templateUrl: './item.page.html',
@@ -82,6 +82,10 @@ export class ItemPage {
     .catch((err: any) => {
       console.log(err)
     })
+  }
+
+  async changeImage(field: any){
+    console.log(field)
   }
 
   async publishItemChanges(){

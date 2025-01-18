@@ -1,8 +1,8 @@
 #items{
-    padding: 2vw;
     #item{
         // margin-bottom: 4vw;
         #itemItem{
+            --min-height: 25vw;
             ion-label{
                 font-size: 3.5vw;
                 line-height: 4vw;
@@ -10,8 +10,14 @@
             }
             ion-note{
                 font-family: "Prompt", sans-serif;
+                margin: auto 0;
             }         
         }
+    }
+}
+#add-item-trigger{
+    ion-icon{
+        font-size: 8vw
     }
 }
 // ion-item{
