@@ -6,8 +6,18 @@
     <ion-header id="sideBarHeader" class="ion-no-border ion-padding-vertical">
       <ion-img routerLink="/" slot="start" id="logo" src="assets/writeflow-logo.svg"></ion-img>
     </ion-header>
-    <ion-list id="sideBarHeaderList" lines="full">
-      <ion-item [button]="true" color="transparent" class="ion-no-border ion-no-padding">
+    <ion-list class="ion-no-border ion-no-padding" id="sideBarHeaderList" lines="full">
+      <ion-item [button]="true" class="ion-no-border ion-no-padding">
+        <ion-icon color="danger" slot="start" name="list-circle" size="medium"></ion-icon>
+        <ion-label slot="start">General</ion-label>
+        <ion-note slot="end">6</ion-note>
+      </ion-item>
+      <ion-item [button]="true" class="ion-no-border ion-no-padding">
+        <ion-icon color="danger" slot="start" name="list-circle" size="medium"></ion-icon>
+        <ion-label slot="start">General</ion-label>
+        <ion-note slot="end">6</ion-note>
+      </ion-item>
+      <ion-item [button]="true" class="ion-no-border ion-no-padding">
         <ion-icon color="danger" slot="start" name="list-circle" size="medium"></ion-icon>
         <ion-label slot="start">General</ion-label>
         <ion-note slot="end">6</ion-note>
@@ -41,7 +51,7 @@
           <ion-label>pulse</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="collections">
-          <ion-icon name="server-outline"></ion-icon>
+          <ion-icon name="library-outline"></ion-icon>
           <ion-label>collections</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="account">

@@ -9,7 +9,7 @@
              <ion-item [button]="true"  id="collectionItem" router-direction="forward"  (click)="navCollection(collection)">
                <ion-label>{{collection?.displayName}}</ion-label>
                <ion-note slot="end" *ngIf="collection?.items">Items: {{collection?.items?.length}}</ion-note>
-               <ion-icon color="primary" slot="end" name="documents-outline" size="large"></ion-icon>
+               <ion-icon color="primary" slot="end" name="library-outline" size="large"></ion-icon>
             </ion-item>
       
           <ion-item-options side="end">

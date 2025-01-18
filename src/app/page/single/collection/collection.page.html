@@ -12,7 +12,7 @@
         <ng-template>
           <ion-content>
             <ion-list lines="full">
-              <ion-item [button]="true" [detail]="false" (click)="openModal()">Add New {{collectionsService!.collection?.displayName.slice(0, -1)}}</ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="openModal()">Add New {{collectionsService!.collection?.singularName}}</ion-item>
               <!-- <ion-item [button]="true" [detail]="false">Option 2</ion-item> -->
               <!-- <ion-item [button]="true" id="nested-trigger">More options...</ion-item>
               <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
@@ -41,7 +41,7 @@
       </ion-item-options>
   
          <ion-item [button]="true"  id="itemItem" router-direction="forward" (click)="navItem(item)">
-          <ion-icon color="primary" slot="end" name="document-text-outline" size="large"></ion-icon>
+          <ion-icon color="primary" slot="end" name="newspaper-outline" size="large"></ion-icon>
           <ion-label>{{item?.fieldData?.name}}</ion-label>
           <!-- <ion-note slot="end">{{item?.items?.length}}</ion-note> -->
         </ion-item>

@@ -3,7 +3,7 @@
   <app-site-select></app-site-select>
   <ion-grid *ngIf="!sitesService.sitesLoading" class="ion-no-padding">
     <ion-row class="ion-no-padding">
-      <ion-col size="12" class="ion-no-padding">
+      <ion-col size="6" class="ion-no-padding">
         <ion-card color="primary" class="ion-no-padding">
           <ion-card-header>
             <ion-card-title>{{sitesService.sites?.length}}</ion-card-title>
@@ -11,7 +11,7 @@
           </ion-card-header>
         </ion-card>
       </ion-col>
-      <ion-col size="12" class="ion-no-padding" *ngIf="collectionsService?.collections?.length">
+      <ion-col size="6" class="ion-no-padding" *ngIf="collectionsService?.collections?.length">
         <ion-card color="primary" class="ion-no-padding">
           <ion-card-header>
             <ion-card-title>{{collectionsService.collections?.length}}</ion-card-title>
