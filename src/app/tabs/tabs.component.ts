@@ -16,9 +16,6 @@ export class TabsComponent {
   //   console.log('hello');
   // }
 
-  async logout(){
-    this.authenticationService.logout();
-  }
 
   onSwipe(event:any) {
     // console.log(event)

@@ -14,6 +14,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angul
 
 export class AuthenticationService {
   userId:any;
+  user:any;
   decoded:any;
   firstVisit = false;
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -36,6 +37,14 @@ export class AuthenticationService {
   async requestToken(code:any) {
     let api = `${environment.webflow_service_url}token?code=${code}`;
     return firstValueFrom(this.http.post<any>(api, {}));
+  }
+
+  async getAuthorizedUserInfo(){
+    let api = `${environment.webflow_service_url}user`;
+    let token = this.getToken();
+    console.log(token);
+    this.headers = this.headers.set('Authorization', `Bearer ${token}`);
+    return firstValueFrom(this.http.get<any>(api, { headers: this.headers }));
   }
 
   //Get JWT TOKEN from localstorage

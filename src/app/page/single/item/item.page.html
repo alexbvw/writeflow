@@ -5,18 +5,48 @@
     </ion-buttons>
     <ion-title size="small">{{itemsService.item?.fieldData?.name}}</ion-title>
   </ion-toolbar>
-  <ion-toolbar id="toolbarSmall" color="primary">
+  <ion-toolbar id="toolbarSmall" color="medium">
     <!-- <ion-title>{{itemsService?.item?.fieldData?.name}}</ion-title> -->
-    <ion-button 
-      class="ion-margin ion-no-border ion-no-shadow"
-      slot="end" 
-      size="small"
-     
-      (click)="publishItemChanges()"
+     <ion-button
+       lines="none"
+       button="true"
+       id="publish"
+       color="primary"
+       (click)="publishItemChanges()"
+     >  
+       Publish
+       <ion-icon slot="start" name="checkmark-done-outline"></ion-icon>
+    </ion-button>
+    <ion-button
+       lines="none"
+       button="true"
+       id="unpublish"
+       color="medium"
+       (click)="unpublishItem()"
+     >  
+       Save As Draft
+       <ion-icon slot="start" name="arrow-undo-outline"></ion-icon>
+    </ion-button>
+  <!-- <ion-button 
+    slot="start" 
+    size="small"
+    (click)="unpublishItem()"
+    color="tertiary"
+    class="ion-margin ion-no-border ion-no-shadow"
+  >
+    Unpublish
+  <ion-icon slot="end" name="checkmark-done-outline"></ion-icon>
+</ion-button>
+  <ion-button 
+    slot="start" 
+    size="small"
+    color="secondary"
+    (click)="publishItemChanges()"
+    class="ion-margin ion-no-border ion-no-shadow"
     >
       Publish
     <ion-icon slot="end" name="checkmark-done-outline"></ion-icon>
-  </ion-button>
+  </ion-button> -->
   </ion-toolbar>
 </ion-header>
 

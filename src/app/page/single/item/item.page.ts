@@ -1,6 +1,6 @@
-import { Editor, toHTML } from 'ngx-editor';
+import { Editor } from 'ngx-editor';
+import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
 import { CollectionsService } from 'src/app/services/collections.service';
 
@@ -92,7 +92,7 @@ export class ItemPage {
     console.log(this.fields)
     this.collectionsService.collectionId = localStorage.getItem('collectionId')
     await this.updateCollectionItems(this.collectionsService.collectionId)
-    await this.presentToast('bottom', 'Item updated successfully')
+   
   }
   async presentToast(position: 'top' | 'middle' | 'bottom', message?: any) {
     const toast = await this.toastController.create({
@@ -147,16 +147,21 @@ export class ItemPage {
          }
       ]
     }
-    console.log(jsonData)
+    // console.log(jsonData)
     this.itemsService.updateCollectionItems(collectionId, jsonData)
-    .then((res: any) => {
-      console.log(res)
-      this.getItem(this.collectionsService.collectionId,this.itemsService.itemId)
+    .then(async (res: any) => {
+      // console.log(res)
+      await this.getItem(this.collectionsService.collectionId,this.itemsService.itemId)
+      await this.presentToast('bottom', 'Item updated successfully')
     })
     .catch((err: any) => {
       console.log(err)
     })
 
+  }
+
+  async unpublishItem(){
+    this.itemsService.itemId = localStorage.getItem('itemId')
   }
 
 }

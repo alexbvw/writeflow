@@ -8,4 +8,26 @@
             } 
         }
     }
+    #userThumbnail{
+        width: 25vw;
+        height: 25vw;
+        display: flex;
+        align-items: center;
+        border-radius: 100%;
+        justify-content: center;
+        background-color: aliceblue;
+        ion-label{
+            font-weight: 800;
+            font-size: 10.25vw;
+            color: var(--ion-color-primary);
+            font-family: "Prompt", sans-serif;
+        }
+    }
+    #userDetails{
+        ion-label{
+            font-size: 3.5vw;
+            font-weight: 300;
+            font-family: "Prompt", sans-serif;
+        }
+    }
 }

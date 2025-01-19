@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-account',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPage {
 
-  constructor() { }
+  constructor(public authenticationService: AuthenticationService) { }
 
-  // ngOnInit() {
-  // }
+  async ionViewWillEnter() {
+    await this.getAuthorizedUserInfo()
+  }
+
+  async getAuthorizedUserInfo() {
+    await this.authenticationService.getAuthorizedUserInfo()
+    .then(async (res: any) => {
+      this.authenticationService.user = JSON.parse(res.response)
+      console.log(this.authenticationService.user)
+    })
+    .catch((err: any) => {
+      console.log(err)
+    })
+  }
 
 }

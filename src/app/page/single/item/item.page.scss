@@ -1,3 +1,21 @@
+#toolbarSmall{
+    display: flex;
+    --min-height: 3.5%;
+    flex-direction: row;
+    justify-content: end;
+    #publish{
+        width: 40%;
+    }
+    ion-button{
+        font-size: 2.95vw;
+        line-height: 3.5vw;
+        float: right;
+        margin: 0!important;
+        --border-radius: 0%!important;
+        font-family: "Prompt", sans-serif;
+    }
+}
+
 #itemsTop{
         margin: 0vw ;
         --background: var(--ion-background-color);

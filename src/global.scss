@@ -40,6 +40,9 @@
 }
 ion-button{
     --box-shadow:none;
+    text-transform: none;
+    --border-radius: 5vw 5vw 5vw 0;
+    // --box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.15);
 }
 ion-card{
     border-radius: 4vw;
