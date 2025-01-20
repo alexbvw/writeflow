@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsService } from 'src/app/services/items.service';
-import { CollectionsService } from 'src/app/services/collections.service';
 import { ModalController, PopoverController } from '@ionic/angular';
+import { CollectionsService } from 'src/app/services/collections.service';
 import { AddItemComponent } from 'src/app/organism/add-item/add-item.component';
 @Component({
   selector: 'app-collection',

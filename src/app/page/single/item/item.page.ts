@@ -34,6 +34,21 @@ export class ItemPage {
     }
   }
 
+  async textEditorChange(event: any, fieldUpdate: any) {
+    // console.log(event,fieldUpdate);
+    let slug = event.target.value.replace(/\s/g, '-').toLowerCase();
+    console.log(slug)
+    console.log(this.fields)
+    for (let [fieldIndex, field] of this.fields.entries()) {
+      if (field.slug === 'slug') {
+        field.data = slug;
+        console.log(field)
+        console.log(slug)
+      }
+    }
+  }
+  
+
   async ionViewWillEnter() {
     this.itemsService.itemLoading = true
     // this.editor = new Editor();
@@ -88,12 +103,16 @@ export class ItemPage {
     console.log(field)
   }
 
+  async deleteImage(field: any){
+    console.log(field)
+  }
+
   async publishItemChanges(){
     console.log(this.fields)
     this.collectionsService.collectionId = localStorage.getItem('collectionId')
     await this.updateCollectionItems(this.collectionsService.collectionId)
-   
   }
+
   async presentToast(position: 'top' | 'middle' | 'bottom', message?: any) {
     const toast = await this.toastController.create({
       message: message,

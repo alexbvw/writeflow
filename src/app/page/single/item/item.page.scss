@@ -1,3 +1,10 @@
+ion-title{
+    font-size: 0.95rem;
+    line-height: 1rem;
+    margin: auto 0;
+    font-family: "Prompt", sans-serif;
+}
+
 #toolbarSmall{
     display: flex;
     --min-height: 3.5%;
@@ -7,8 +14,8 @@
         width: 40%;
     }
     ion-button{
-        font-size: 2.95vw;
-        line-height: 3.5vw;
+        font-size: 0.75rem;
+        line-height: 1.5rem;
         float: right;
         margin: 0!important;
         --border-radius: 0%!important;
@@ -22,9 +29,9 @@
     #fieldItem{
 
     #field{
-        font-size: 4vw;
-        line-height: 3.5vw;
-        margin: 5vw 0vw 5vw 0vw;
+        font-size: 1.15rem;
+        line-height: 1.5rem;
+        margin: 1rem 0rem 1rem 0rem;
         font-family: "Prompt", sans-serif;
         }         
     }
@@ -35,9 +42,9 @@
     #fieldItem{
         
     #field{
-            font-size: 4vw;
-            line-height: 3.5vw;
-            margin: 5vw 0vw 5vw 0vw;
+            font-size: 1.05rem;
+            line-height: 1.5rem;
+            margin: 1rem 0rem 1rem 0rem;
             font-family: "Prompt", sans-serif;
         }         
     }
@@ -52,17 +59,20 @@
     justify-content: left;
     flex-direction: column;
     ion-label{
-        font-size: 4vw;
-        line-height: 3.5vw;
-        margin: 5vw 1vw 5vw 1vw;
+        font-size: 0.95rem;
+        line-height: 1rem;
+        margin: 1rem 0.2rem 1rem 0.2rem;
         font-family: "Prompt", sans-serif;
     }
     ion-img{
-        margin: 0vw 1vw 5vw 1vw;
+        margin: 0rem 0.4rem 1rem 0.4rem;
     }ion-img::part(image) {
         border-radius: 10px;
       }
-    ion-button{
+      #imageButtons{
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
         right: 4%;
         bottom: 10%;
         position: absolute;
@@ -74,11 +84,11 @@ ion-content{
 #editor {
     width: 100%;
     // height: 100%;
-    margin: 5vw 0vw 5vw 0vw;
+    margin: 5vw 0vw 5vw 0rem;
     ion-label {
-        font-size: 4vw;
-        line-height: 3.5vw;
-        margin: 0vw 1vw 5vw 1vw;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin: 0vw 1vw 5vw 1rem;
         font-family: "Prompt", sans-serif;
     }
 }

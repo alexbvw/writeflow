@@ -1,16 +1,16 @@
 #account{
     ion-item{
         ion-thumbnail {
-            height: 25vw;
-            width: 25vw;
+            height: 6rem;
+            width: 6rem;
             img{
                 border-radius: 100%;
             } 
         }
     }
     #userThumbnail{
-        width: 25vw;
-        height: 25vw;
+        width: 6rem;
+        height: 6rem;
         display: flex;
         align-items: center;
         border-radius: 100%;
@@ -18,14 +18,14 @@
         background-color: aliceblue;
         ion-label{
             font-weight: 800;
-            font-size: 10.25vw;
+            font-size: 1.25rem;
             color: var(--ion-color-primary);
             font-family: "Prompt", sans-serif;
         }
     }
     #userDetails{
         ion-label{
-            font-size: 3.5vw;
+            font-size: 0.95rem;
             font-weight: 300;
             font-family: "Prompt", sans-serif;
         }

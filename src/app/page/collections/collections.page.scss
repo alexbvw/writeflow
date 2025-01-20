@@ -1,18 +1,20 @@
 #collections{
     #collection{
-        // margin-bottom: 4vw;
+        // margin-bottom: 4rem;
    
         #collectionItem{
             display: flex;
             justify-content: center;
             vertical-align: middle;
-            --min-height: 25vw;
+            --min-height: 7rem;
             ion-label{
                 font-family: "Prompt", sans-serif;
             }
             ion-note{
+                margin: auto 1rem auto 0rem;
+                font-size: small;
+                font-weight: 300;
                 font-family: "Prompt", sans-serif;
-                margin: auto 0;
             }         
         }
     }

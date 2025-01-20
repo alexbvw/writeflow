@@ -8,7 +8,11 @@
       
              <ion-item [button]="true"  id="collectionItem" router-direction="forward"  (click)="navCollection(collection)">
                <ion-label>{{collection?.displayName}}</ion-label>
-               <ion-note slot="end" *ngIf="collection?.items">Items: {{collection?.items?.length}}</ion-note>
+              
+               <ion-note slot="end">
+                <ion-spinner name="dots" *ngIf="!collection?.items"></ion-spinner>
+                {{collection?.items?.length ? 'Items:' : '' }} {{collection?.items?.length}}
+              </ion-note>
                <ion-icon color="primary" slot="end" name="library-outline" size="large"></ion-icon>
             </ion-item>
       

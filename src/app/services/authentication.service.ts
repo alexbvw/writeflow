@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
 import { firstValueFrom, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root'
 })

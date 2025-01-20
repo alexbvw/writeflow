@@ -1,10 +1,10 @@
 <ion-menu [type]="menuType" side="end" content-id="main-content">
-  <ion-content class="ion-padding">
+  <ion-content class="ion-no-padding">
     <!-- <ion-menu-toggle>
       <ion-button>Click to close the menu</ion-button>
     </ion-menu-toggle> -->
-    <ion-header id="sideBarHeader" class="ion-no-border ion-padding-vertical">
-      <ion-img routerLink="/" slot="start" id="logo" src="assets/writeflow-logo.svg"></ion-img>
+    <ion-header id="sideBarHeader" class="ion-no-border ion-no-padding ion-margin">
+      <ion-img routerLink="/" slot="start" id="sideBarlogo" src="assets/writeflow-logo.svg"></ion-img>
     </ion-header>
     <ion-list class="ion-no-border ion-no-padding" id="sideBarHeaderList" lines="full">
       <ion-item [button]="true" class="ion-no-border">
@@ -16,6 +16,7 @@
         shape="round" 
         fill="outline" 
         expand="block" 
+        class="ion-margin"
         (click)="authenticationService.logout()">logout
     </ion-button>
   </ion-content>

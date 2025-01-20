@@ -22,6 +22,8 @@
         label={{field?.displayName}} 
         name="{{field?.slug}}"
         placeholder={{field?.helpText}} 
+        [disabled]="field.slug === 'slug'"
+        (input)="editorChange($event, field)"
       >
       </ion-textarea>
     </ion-item>
@@ -77,9 +79,21 @@
       <div id="fieldImageItem">
         <ion-label>{{field.displayName}}</ion-label>
         <ion-img src="{{field?.data?.url}}" onload="this.onerror=null;this.src='assets/placeholder.svg'" onerror="this.src='assets/placeholder.svg'"></ion-img>
-        <ion-button size="small">
-          Change Image
+        <span id="imageButtons">
+          <ion-button id=`delete-${{field?.slug}}` size="small" *ngIf="field.data.url !== 'assets/placeholder.svg'" (click)="deleteImage(field)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+          <ion-button id=`add-${{field?.slug}}` size="small">
+          {{field.data.url === 'assets/placeholder.svg' ? 'Add Image' : 'Change Image'}}
         </ion-button>
+
+        <ion-popover trigger=`add-${{field?.slug}}` triggerAction="click">
+          <ng-template>
+            <ion-item [button]="true" [detail]="false" (click)="changeImage(field)">Select Image <ion-icon slot="end" name="image-outline"></ion-icon></ion-item>
+            <ion-item [button]="true" [detail]="false" >Take Photo <ion-icon slot="end" name="camera-outline"></ion-icon></ion-item>
+          </ng-template>
+        </ion-popover>
+      </span>
       </div>
     </ion-item>
 

@@ -1,6 +1,6 @@
+import { IonTabs } from '@ionic/angular';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { IonTabs } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',

@@ -3,9 +3,9 @@ import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, isDevMode } from '@angular/core';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, isDevMode } from '@angular/core';
 // import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent],

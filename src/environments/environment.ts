@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   state: 'init',
-  // token: '0b37b08751c08ecdd957867e38e30009098f7c6f53045074ce2a449fc9de072a',
+  token: '0b37b08751c08ecdd957867e38e30009098f7c6f53045074ce2a449fc9de072a',
   response_type: 'code',
   webflow_base_url: 'https://webflow.com/',
   webflow_auth_url: 'https://webflow.com/oauth/authorize',

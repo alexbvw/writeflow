@@ -1,7 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 import { environment } from 'src/environments/environment';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-authentication',
@@ -41,7 +41,7 @@ export class AuthenticationPage implements OnInit {
     // let token = environment.token;
     // localStorage.setItem('token', token);
     localStorage.setItem('firstView', 'false');
-    // this.authenticationService.router.navigate(['/pulse']);
+    // this.authenticationService.router.navigate(['/pulse']); 
     window.open(this.authenticationService.webflowAuthUrl, '_self');
   }
 

@@ -21,6 +21,26 @@ export class AddItemComponent {
     console.log(this.activeFields);
   }
 
+  async editorChange(event: any, fieldUpdate: any) {
+    // console.log(event,fieldUpdate);
+    let slug = event.target.value.replace(/\s/g, '-').toLowerCase();
+    for (let field of this.activeFields) {
+      console.log(field)
+      console.log(slug)
+      if (field.slug === 'slug') {
+        field['data'] = slug;
+      }
+    }
+  }
+
+  async changeImage(field: any){
+    console.log(field)
+  }
+
+  async deleteImage(field: any){
+    console.log(field)
+  }
+
   cancel() {
     return this.modalService.dismiss(null, 'cancel');
   }

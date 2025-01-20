@@ -41,11 +41,11 @@
 ion-button{
     --box-shadow:none;
     text-transform: none;
-    --border-radius: 5vw 5vw 5vw 0;
+    --border-radius: 2rem 2rem 2rem 0;
     // --box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.15);
 }
 ion-card{
-    border-radius: 4vw;
+    border-radius: 2rem 2rem 2rem 0;
 }
 .list-md{
     padding: 0;
@@ -61,8 +61,8 @@ ion-card{
     top: 0!important;
 }
 #logo{
-    height: 4vh;
-    margin: 0 0 0 3.5vw;
+    height: 2rem;
+    margin: 0 0 0 .5rem;
 }
 #header{
     display: flex;
