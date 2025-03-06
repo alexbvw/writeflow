@@ -2,10 +2,7 @@
   <ion-progress-bar type="indeterminate" *ngIf="collectionsService.collectionsLoading"></ion-progress-bar>
     <ion-list *ngIf="!collectionsService.collectionsLoading" id="collections" lines="full">
         <ion-item-sliding *ngFor="let collection of collectionsService.collections" id="collection">
-          <ion-item-options side="start">
-            <ion-item-option color="success">Unpublish</ion-item-option>
-          </ion-item-options>
-      
+    
              <ion-item [button]="true"  id="collectionItem" router-direction="forward"  (click)="navCollection(collection)">
                <ion-label>{{collection?.displayName}}</ion-label>
               

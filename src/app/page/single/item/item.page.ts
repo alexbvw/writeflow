@@ -74,6 +74,7 @@ export class ItemPage {
       console.log(this.itemsService.item)
       if(localStorage.getItem('activeFields')){
         this.fields = JSON.parse(localStorage.getItem('activeFields') || '')
+        console.log(this.fields)
         // console.log(JSON.parse(localStorage.getItem('activeFields') || ''))
       }
        for(let [fieldIndex, field] of await this.fields.entries()){     
@@ -103,14 +104,23 @@ export class ItemPage {
     console.log(field)
   }
 
+  async setColor(newColor: any) {
+    console.log('value', newColor);
+    // this.linkColor = newColor;
+  }
+
   async deleteImage(field: any){
     console.log(field)
   }
 
   async publishItemChanges(){
-    console.log(this.fields)
+    // console.log(this.fields)
     this.collectionsService.collectionId = localStorage.getItem('collectionId')
     await this.updateCollectionItems(this.collectionsService.collectionId)
+  }
+
+  async archiveItem(itemId: any){
+    console.log(itemId)
   }
 
   async presentToast(position: 'top' | 'middle' | 'bottom', message?: any) {

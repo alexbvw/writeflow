@@ -1,6 +1,6 @@
 <ion-header [translucent]="true" *ngIf="!itemsService.itemsLoading">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" mode="md">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{collectionsService!.collection?.displayName}}</ion-title>
@@ -12,7 +12,7 @@
         <ng-template>
           <ion-content>
             <ion-list lines="full">
-              <ion-item [button]="true" [detail]="false" (click)="openModal()">Add New {{collectionsService!.collection?.singularName}}</ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="addItemModal()">Add New {{collectionsService!.collection?.singularName}}</ion-item>
               <!-- <ion-item [button]="true" [detail]="false">Option 2</ion-item> -->
               <!-- <ion-item [button]="true" id="nested-trigger">More options...</ion-item>
               <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
@@ -37,18 +37,20 @@
   <ion-list *ngIf="!itemsService.itemsLoading" id="items" lines="full">
     <ion-item-sliding *ngFor="let item of itemsService.items" id="item">
       <ion-item-options side="start">
-        <ion-item-option color="warning">Unpublish</ion-item-option>
+        <ion-item-option color="warning">Save as Draft</ion-item-option>
       </ion-item-options>
   
          <ion-item [button]="true"  id="itemItem" router-direction="forward" (click)="navItem(item)">
            <ion-label>{{item?.fieldData?.name}}</ion-label>
-           <ion-badge color="success" slot="end" *ngIf="!item?.isDraft || !item?.isArchived">published</ion-badge>
-           <ion-icon color="primary" slot="end" name="newspaper-outline" size="large"></ion-icon>
+           <ion-badge color="success" slot="end" *ngIf="!item?.isDraft && !item?.isArchived">published</ion-badge>
+           <ion-badge color="warning" slot="end" *ngIf="item?.isDraft && !item?.isArchived">draft</ion-badge>
+           <ion-badge color="danger" slot="end" *ngIf="item?.isArchived && item?.isDraft">archived</ion-badge>
+           <!-- <ion-icon color="primary" slot="end" name="newspaper-outline" size="large"></ion-icon> -->
           <!-- <ion-note slot="end">{{item?.items?.length}}</ion-note> -->
         </ion-item>
   
       <ion-item-options side="end">
-        <ion-item-option color="danger">Delete</ion-item-option>
+        <ion-item-option color="danger">Archive</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>

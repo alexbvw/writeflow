@@ -4,7 +4,8 @@
       <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+      <ion-button color="secondary" (click)="saveAsDraft()" [strong]="true">Save as Draft</ion-button>
+      <ion-button color="primary" (click)="publishItem()" [strong]="true">Publish</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -49,6 +50,7 @@
     <ion-item *ngIf="field.type === 'Number'" id="fieldItem">
       <ion-input
         id="field"
+        class="numberInput"
         fill="outline" 
         [(ngModel)]="field.data"
         type={{field?.type}}
@@ -86,10 +88,16 @@
           <ion-button id=`add-${{field?.slug}}` size="small">
           {{field.data.url === 'assets/placeholder.svg' ? 'Add Image' : 'Change Image'}}
         </ion-button>
-
+        <!-- <div>
+          <button mat-button color="primary" (click)="fileUpload.click()">choose file</button>  
+          <button mat-button color="warn" (click)="onClick()">Upload</button>  
+          <input [hidden]="true" type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" />
+       </div> -->
         <ion-popover trigger=`add-${{field?.slug}}` triggerAction="click">
           <ng-template>
-            <ion-item [button]="true" [detail]="false" (click)="changeImage(field)">Select Image <ion-icon slot="end" name="image-outline"></ion-icon></ion-item>
+            
+            <ion-item [button]="true" [detail]="false" (click)="selectImage(field)">Select Image <ion-icon slot="end" name="image-outline"></ion-icon></ion-item>
+            <input [hidden]="true" type="file" #file id="file" name="file" multiple="multiple" accept="image/*" />
             <ion-item [button]="true" [detail]="false" >Take Photo <ion-icon slot="end" name="camera-outline"></ion-icon></ion-item>
           </ng-template>
         </ion-popover>

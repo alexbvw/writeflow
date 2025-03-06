@@ -30,6 +30,7 @@ export class SiteSelectComponent  implements OnInit {
       if (selectedSite) {
         this.sitesService.selectedSite = selectedSite;
         console.log(this.sitesService.selectedSite);
+        this.getCollections(siteId);
       }
     }
   }
@@ -59,23 +60,31 @@ async changeSite(event: any) {
   }
 }
 
-  async getCollections(siteId:any){
-    await this.collectionsService.getCollections(siteId)
-    .then((res: any) => {
-      console.log(res?.collections)
-      this.collectionsService.collections = res?.collections;
-      // this.getItems(res?.collections[0]?.id)
-    })
-    .catch((err: any) => {
-      console.log(err)
-    })
-  }
+async getCollections(siteId:any){
+  this.collectionsService.collectionsLoading = true;
+  await this.collectionsService.getCollections(siteId)
+  .then((res: any) => {
+    this.collectionsService.collections = res?.collections;
+    for(let [collectionIndex, collection] of this.collectionsService.collections.entries()){
+      this.getItems(collection?.id)
+    }
+    this.collectionsService.collectionsLoading = false;
+    console.log(res?.collections)
+  })
+  .catch((err: any) => {
+    console.log(err)
+  })
+}
 
   async getItems(collectionId:any){
     await this.itemsService.getItems(collectionId)
     .then((res: any) => {
-      console.log(res?.items)
       this.itemsService.items = res?.items;
+      for(let [collectionIndex, collection] of this.collectionsService.collections.entries()){
+        if(collection?.id === collectionId){
+          this.collectionsService.collections[collectionIndex].items = this.itemsService.items
+        }
+      }
     })
     .catch((err: any) => {
       console.log(err)

@@ -31,9 +31,8 @@ export class TabsComponent {
 
   getNextTab(currentTab:any, direction:any) {
     switch(currentTab) {
-      case 'pulse': if(direction == 'left') return 'collections'; else return null;
-      case 'collections': if(direction == 'right') return 'pulse'; else return 'account';
-      case 'account': if(direction == 'right') return 'collections'; else return null;
+      case 'pulse': if(direction == 'left') return 'account'; else return 'account';
+      case 'account': if(direction == 'right') return 'pulse'; else return 'pulse';
     }
     return null;
   }

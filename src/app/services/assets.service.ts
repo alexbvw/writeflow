@@ -5,14 +5,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ItemsService {
-  item: any = {};
-  itemId: any = '';
-  items: any = [];
-  itemLoading = true;
-  itemsLoading = true;
+export class AssetsService {
+  asset: any = {};
+  assetId: any = '';
+  assets: any = [];
+  assetLoading = true;
+  assetsLoading = true;
   serviceUrl = environment.webflow_service_url;
-  headers = new HttpHeaders().set('Content-Type', 'application/json');
+  headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
   constructor(
     private http: HttpClient
   ) { }
@@ -21,20 +21,27 @@ export class ItemsService {
     this.headers = this.headers.set('Authorization', `Bearer ${token}`);
   }
 
-  async createItem(collectionId: any, data: any) {
+  async UploadAsset(siteId: any, file: File) {
+
     await this.setAuthHeader(localStorage.getItem('token') || '');
-    let url = `${this.serviceUrl}items/${collectionId}`;
+
+    let url = `${this.serviceUrl}sites/${siteId}/assets`;
+    
+    let form = new FormData();
+    form.append('file', file, file.name);
+    const customHeaders = this.headers.delete('Content-Type');
     return firstValueFrom(this.http.request(
       'POST',
       url,
-      { headers: this.headers, body: data }
+      { headers: customHeaders, body: form }
     ));
+
   }
 
-  // Get Webflow items
-  async getItems(collectionId:any) {
+  // Get Webflow assets
+  async getAssets(collectionId:any) {
     await this.setAuthHeader(localStorage.getItem('token') || '');
-    let url = `${this.serviceUrl}items?collectionId=${collectionId}`;
+    let url = `${this.serviceUrl}assets?collectionId=${collectionId}`;
     return firstValueFrom(this.http.request(
       'GET',
       url,
@@ -42,10 +49,10 @@ export class ItemsService {
     ));
   }
 
-  // Get a specific Webflow Item by Item ID
-  async getItem(collectionId:any,itemId: any) {
+  // Get a specific Webflow Asset by Asset ID
+  async getAsset(collectionId:any,assetId: any) {
     await this.setAuthHeader(localStorage.getItem('token') || '');
-    let url = `${this.serviceUrl}collections/${collectionId}/items/${itemId}`;
+    let url = `${this.serviceUrl}collections/${collectionId}/assets/${assetId}`;
     return firstValueFrom(this.http.request(
       'GET',
       url,
@@ -53,9 +60,9 @@ export class ItemsService {
     ));
   }
 
-  async updateCollectionItems(collectionId: any, data: any) {
+  async updateCollectionAssets(collectionId: any, data: any) {
     await this.setAuthHeader(localStorage.getItem('token') || '');
-    let url = `${this.serviceUrl}collection/${collectionId}/items`;
+    let url = `${this.serviceUrl}collection/${collectionId}/assets`;
     return firstValueFrom(this.http.request(
       'PUT',
       url,
@@ -64,4 +71,4 @@ export class ItemsService {
   }
 
 }
-// https://localhost:444/v1/webflow/collections/669b72d74bb30c4fec719e3e/items
+// https://localhost:444/v1/webflow/collections/669b72d74bb30c4fec719e3e/assets

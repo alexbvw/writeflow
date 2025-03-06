@@ -1469,6 +1469,11 @@
     ionicons "^7.2.2"
     tslib "^2.1.0"
 
+"@ionic/pwa-elements@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/@ionic/pwa-elements/-/pwa-elements-3.3.0.tgz"
+  integrity sha512-vbykpxd2nGRlA67AnqDwsiVf8PUmInLyi6lQdnPDjeiML1WZa0CPe6r632nGDV9PTi+sWNde9Xexg9SD6Pwyqw==
+
 "@ionic/utils-array@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@ionic/utils-array/-/utils-array-2.1.5.tgz"

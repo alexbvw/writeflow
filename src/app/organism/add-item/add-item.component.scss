@@ -40,10 +40,13 @@ ion-title{
 #itemsBottom{
     --background: var(--ion-background-color);
     #fieldItem{
-        
+       .numberInput{
+           height: 4rem;
+       }
     #field{
+            
             font-size: 1.05rem;
-            line-height: 1.5rem;
+            line-height: 1.25rem;
             margin: 1rem 0rem 1rem 0rem;
             font-family: "Prompt", sans-serif;
         }         
@@ -65,7 +68,7 @@ ion-title{
         font-family: "Prompt", sans-serif;
     }
     ion-img{
-        margin: 0rem 0.4rem 0rem 0.4rem;
+        margin: 0rem 0.4rem 1rem 0.4rem;
     }ion-img::part(image) {
         border-radius: 10px;
       }

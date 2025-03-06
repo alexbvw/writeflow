@@ -12,17 +12,17 @@ export class RedirectPage implements OnInit {
   constructor(private router: Router,private route: ActivatedRoute, private authenticationService: AuthenticationService) { }
 
   async ngOnInit() {
-    console.log('hello');
+    // console.log('hello');
     await this.redirect();
   }
 
   async redirect(){
     this.route.queryParams.subscribe(async (params:any) => {
-      console.log(params);
+      // console.log(params);
       if(params['code'] ){
         this.authenticationService.requestToken(params['code'])
         .then(async (res: any) => {
-          console.log(res)
+          // console.log(res)
           localStorage.setItem('token', await res?.response?.access_token);
           await this.router.navigate(['/pulse']);
         })

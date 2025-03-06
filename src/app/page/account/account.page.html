@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
   <ion-progress-bar type="indeterminate" *ngIf="!authenticationService.user"></ion-progress-bar>
-    <ion-card color="primary" class="ion-padding ion-margin" id="account" *ngIf="authenticationService.user">
+    <ion-card color="primary" class="ion-margin" id="account" *ngIf="authenticationService.user">
         <ion-card-header>
             <ion-item lines="none" color="translucent" class="ion-no-border ion-no-padding">
                 <ion-thumbnail slot="start" id="userThumbnail">
@@ -18,14 +18,14 @@
         </ion-card-content> -->
       </ion-card>
       <ion-button 
-        *ngIf="authenticationService.user"
-        color="light" 
-        shape="round" 
-        fill="outline" 
-        expand="block"
-        class="ion-padding" 
+      color="light" 
+      shape="round" 
+      fill="outline" 
+      expand="block"
+      *ngIf="authenticationService.user"
+        class="ion-padding ion-no-margin" 
         (click)="authenticationService.logout()"
       > 
-      logout
+      Logout
     </ion-button>
 </ion-content>

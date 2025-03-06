@@ -12,3 +12,23 @@ ion-card-subtitle{
     margin: 0vw 0vw 0vw auto;
     font-family: "Prompt", sans-serif;
 }
+#collections{
+    #collection{
+        // margin-bottom: 4rem;
+        #collectionItem{
+            display: flex;
+            justify-content: center;
+            vertical-align: middle;
+            --min-height: 7rem;
+            ion-label{
+                font-family: "Prompt", sans-serif;
+            }
+            ion-note{
+                margin: auto 1rem auto 0rem;
+                font-size: small;
+                font-weight: 300;
+                font-family: "Prompt", sans-serif;
+            }         
+        }
+    }
+}

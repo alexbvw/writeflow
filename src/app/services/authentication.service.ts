@@ -41,7 +41,7 @@ export class AuthenticationService {
   async getAuthorizedUserInfo(){
     let api = `${environment.webflow_service_url}user`;
     let token = this.getToken();
-    console.log(token);
+    // console.log(token);
     this.headers = this.headers.set('Authorization', `Bearer ${token}`);
     return firstValueFrom(this.http.get<any>(api, { headers: this.headers }));
   }

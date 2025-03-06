@@ -1,6 +1,6 @@
 <ion-header [translucent]="true" *ngIf="!itemsService.itemLoading">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" mode="md">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title size="small">{{itemsService.item?.fieldData?.name}}</ion-title>
@@ -52,7 +52,8 @@
 
 <ion-content [fullscreen]="true">
   <ion-progress-bar type="indeterminate" *ngIf="itemsService.itemLoading"></ion-progress-bar>
-  <ion-list id="itemsTop">
+  
+  <ion-list id="itemsTop" lines="full">
     <span *ngFor="let field of fields">
     <ion-item *ngIf="field.type === 'PlainText' && field.slug === 'name' || field.type === 'PlainText' && field.slug === 'slug'" id="fieldItem">
       <ion-textarea
@@ -69,11 +70,14 @@
       >
       </ion-textarea>
     </ion-item>
+   
   </span>
   </ion-list>
-  <ion-list id="itemsBottom">
+
+  <ion-list id="itemsBottom" lines="full">
+
     <span *ngFor="let field of fields">
-  
+
     <ion-item *ngIf="field.type === 'PlainText' && field.slug !== 'name' && field.slug !== 'slug'" id="fieldItem">
       <ion-textarea
         auto-grow
@@ -101,19 +105,42 @@
       </ion-input>
     </ion-item>
 
+    <ion-item *ngIf="field.type === 'Color'" id="fieldItem">
+      <ion-label>{{field.displayName}}</ion-label>
+      <input 
+      type="color"
+      id="color-picker-link"
+      (ngModelChange)="setColor($event)"
+      [(ngModel)]="field.data">
+    </ion-item>
+
+    <ion-item *ngIf="field.type === 'Switch'" id="fieldItem">
+      <!-- <ion-label></ion-label> -->
+      <ion-toggle 
+      mode="ios" 
+      id="field" 
+      labelPlacement="start"
+      justify="space-between" 
+      [(ngModel)]="field.data"
+      [enableOnOffLabels]="true"
+      >
+      {{field.displayName}}
+    </ion-toggle>
+    </ion-item>
+
     <ion-item *ngIf="field.type === 'RichText'" id="fieldItem">
       <div id="editor">
         <ion-label>{{field.displayName}}</ion-label>
         <div class="NgxEditor__Wrapper">
-        <ngx-editor-floating-menu  [editor]="editors[field?.editorNumber]"> </ngx-editor-floating-menu>
-        <ngx-editor 
-        [editor]="editors[field?.editorNumber]" 
-        [ngModel]="field?.data" 
-        [disabled]="false" 
-        [placeholder]="'Type here...'"
-        (ngModelChange)="editorChange($event,field)"
-        ></ngx-editor>
-      </div>
+          <ngx-editor-floating-menu  [editor]="editors[field?.editorNumber]"> </ngx-editor-floating-menu>
+          <ngx-editor 
+          [editor]="editors[field?.editorNumber]" 
+          [ngModel]="field?.data" 
+          [disabled]="false" 
+          [placeholder]="'Type here...'"
+          (ngModelChange)="editorChange($event,field)"
+          ></ngx-editor>
+        </div>
       </div>
     </ion-item>
 
@@ -140,6 +167,17 @@
     </ion-item>
 
   </span>
+  <ion-button 
+        *ngIf="!itemsService.itemLoading && !itemsService.item?.isArchived"
+        color="warn" 
+        shape="round" 
+        fill="outline" 
+        expand="block"
+        class="ion-padding" 
+        (click)="archiveItem(this.itemsService.item?.id)"
+      > 
+      archive
+  </ion-button>
   </ion-list>
 
 </ion-content>

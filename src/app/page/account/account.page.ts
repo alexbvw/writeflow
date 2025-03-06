@@ -18,7 +18,7 @@ export class AccountPage {
     await this.authenticationService.getAuthorizedUserInfo()
     .then(async (res: any) => {
       this.authenticationService.user = JSON.parse(res.response)
-      console.log(this.authenticationService.user)
+      // console.log(this.authenticationService.user)
     })
     .catch((err: any) => {
       console.log(err)

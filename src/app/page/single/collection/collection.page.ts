@@ -10,8 +10,6 @@ import { AddItemComponent } from 'src/app/organism/add-item/add-item.component';
   styleUrls: ['./collection.page.scss'],
 })
 export class CollectionPage {
-  // message = 'This modal example uses the modalController to present and dismiss modals.';
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -23,9 +21,9 @@ export class CollectionPage {
 
   async ionViewWillEnter(){
     this.itemsService.itemsLoading = true
-    let collectionId = localStorage.getItem('collectionId')
-    if(collectionId){
-      await this.getCollection(collectionId)
+    this.collectionsService.collectionId = localStorage.getItem('collectionId')
+    if(this.collectionsService.collectionId){
+      await this.getCollection(this.collectionsService.collectionId)
     }
     // this.getItem()
   }
@@ -34,17 +32,16 @@ export class CollectionPage {
 
   // }
 
-  async openModal() {
+  async addItemModal() {
     const modal = await this.modalCtrl.create({
       component: AddItemComponent,
     });
     modal.present();
+    modal.onDidDismiss().then((res: any) => {
+      console.log(res)
+      this.getCollection(this.collectionsService.collectionId)
+    })
     this.popOverController.dismiss()
-    const { data, role } = await modal.onWillDismiss();
-
-    // if (role === 'confirm') {
-    //   this.message = `Hello, ${data}!`;
-    // }
   }
 
   async getCollection(collectionId:any){
